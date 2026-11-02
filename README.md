@@ -36,6 +36,36 @@ npx nx serve ballb-portal     # http://localhost:4200
 | `npx nx graph`              | Visualise the project dependency graph       |
 | `npx nx format:write`       | Format files with Prettier                   |
 
+## Deployment
+
+### GitHub Pages (preview)
+
+The workflow `.github/workflows/deploy-pages.yml` builds and publishes the site to
+`https://iiitrke.github.io/ballb/`. It runs **only on pushes to the `deploy` branch**, or
+manually from the Actions tab.
+
+```sh
+git checkout deploy
+git merge <branch-with-changes>
+git push origin deploy
+```
+
+To make this work, the repository needs:
+
+1. **Settings → Pages → Build and deployment → Source:** `GitHub Actions`.
+2. **Settings → Environments → `github-pages` → Deployment branches:** allow `deploy`.
+
+### VPS / custom domain (later)
+
+The app is not tied to a domain. The base path is set when you build:
+
+```sh
+npx nx build ballb-portal --base-href=/      # site served at the domain root
+```
+
+Serve `dist/apps/ballb-portal/browser/` with any static web server (e.g. nginx). Configure the
+server to fall back to `index.html` for unknown paths so Angular routes work on refresh.
+
 ## Workspace layout
 
 ```
