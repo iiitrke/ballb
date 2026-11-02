@@ -1,0 +1,9 @@
+{
+  "name": "curriculum-data-access",
+  "$schema": "../../../node_modules/nx/schemas/project-schema.json",
+  "sourceRoot": "libs/curriculum/data-access/src",
+  "prefix": "ballb",
+  "projectType": "library",
+  "tags": ["type:data-access", "scope:curriculum"],
+  "targets": {}
+}

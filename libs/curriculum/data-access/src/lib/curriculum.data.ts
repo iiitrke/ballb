@@ -1,0 +1,518 @@
+import { Semester } from './curriculum.models';
+
+/**
+ * SAMPLE CURRICULUM — PLACEHOLDER DATA.
+ *
+ * This is an illustrative BA.LLB structure based on subjects commonly taught in
+ * five-year integrated law programmes in India. It is NOT the official
+ * Shakambhari University syllabus. Replace subject codes, titles, credits and
+ * units with the university's approved syllabus before students rely on it.
+ */
+export const CURRICULUM: Semester[] = [
+  {
+    number: 1,
+    year: 1,
+    subjects: [
+      {
+        code: 'BL-101',
+        title: 'General English I',
+        category: 'Language',
+        credits: 4,
+        summary:
+          'Grammar, comprehension and writing skills with an introduction to legal language.',
+        units: [
+          {
+            title: 'Grammar and Usage',
+            topics: ['Tenses', 'Voice', 'Reported speech', 'Common errors'],
+          },
+          {
+            title: 'Comprehension and Précis',
+            topics: ['Reading passages', 'Précis writing', 'Summarising'],
+          },
+          {
+            title: 'Introduction to Legal Language',
+            topics: ['Legal maxims', 'Legal terminology', 'Plain-English drafting'],
+          },
+        ],
+      },
+      {
+        code: 'BL-102',
+        title: 'Political Science I (Political Theory)',
+        category: 'Arts',
+        credits: 4,
+        summary:
+          'Nature and scope of political science, the State, sovereignty, liberty, equality and justice.',
+        units: [
+          {
+            title: 'Nature of Political Science',
+            topics: ['Meaning and scope', 'Relationship with law'],
+          },
+          {
+            title: 'The State',
+            topics: ['Elements of the State', 'Theories of origin', 'Sovereignty'],
+          },
+          { title: 'Political Concepts', topics: ['Liberty', 'Equality', 'Rights', 'Justice'] },
+        ],
+      },
+      {
+        code: 'BL-103',
+        title: 'Sociology I',
+        category: 'Arts',
+        credits: 4,
+        summary: 'Basic sociological concepts and the relationship between society and law.',
+        units: [
+          { title: 'Introduction to Sociology', topics: ['Society', 'Community', 'Institutions'] },
+          { title: 'Social Control', topics: ['Norms', 'Customs', 'Law as social control'] },
+        ],
+      },
+      {
+        code: 'BL-104',
+        title: 'Law of Contract I',
+        category: 'Law',
+        credits: 4,
+        summary:
+          'General principles of contract: formation, capacity, free consent, consideration and void agreements.',
+        statutes: ['Indian Contract Act, 1872'],
+        units: [
+          {
+            title: 'Formation of Contract',
+            topics: [
+              'Offer and acceptance',
+              'Communication and revocation',
+              'Intention to create legal relations',
+            ],
+          },
+          {
+            title: 'Consideration and Capacity',
+            topics: ['Consideration', 'Privity of contract', 'Minors and persons of unsound mind'],
+          },
+          {
+            title: 'Free Consent',
+            topics: ['Coercion', 'Undue influence', 'Fraud', 'Misrepresentation', 'Mistake'],
+          },
+          {
+            title: 'Void and Voidable Agreements',
+            topics: ['Unlawful object', 'Restraint of trade', 'Wagering agreements'],
+          },
+        ],
+      },
+      {
+        code: 'BL-105',
+        title: 'Legal Methods',
+        category: 'Law',
+        credits: 4,
+        summary: 'Sources of law, legal reasoning, reading judgments and basic legal research.',
+        units: [
+          { title: 'Sources of Law', topics: ['Legislation', 'Precedent', 'Custom'] },
+          { title: 'Reading Case Law', topics: ['Ratio decidendi', 'Obiter dicta', 'Case briefs'] },
+          { title: 'Legal Research', topics: ['Law reports', 'Citations', 'Online databases'] },
+        ],
+      },
+    ],
+  },
+  {
+    number: 2,
+    year: 1,
+    subjects: [
+      {
+        code: 'BL-201',
+        title: 'General English II',
+        category: 'Language',
+        credits: 4,
+        summary: 'Advanced writing, legal correspondence and presentation skills.',
+        units: [],
+      },
+      {
+        code: 'BL-202',
+        title: 'Political Science II (Indian Government and Politics)',
+        category: 'Arts',
+        credits: 4,
+        summary: 'Structure and working of Indian political institutions.',
+        units: [],
+      },
+      {
+        code: 'BL-203',
+        title: 'History I',
+        category: 'Arts',
+        credits: 4,
+        summary: 'Indian history with emphasis on legal and administrative developments.',
+        units: [],
+      },
+      {
+        code: 'BL-204',
+        title: 'Law of Contract II (Specific Contracts)',
+        category: 'Law',
+        credits: 4,
+        summary: 'Indemnity, guarantee, bailment, pledge, agency, sale of goods and partnership.',
+        statutes: [
+          'Indian Contract Act, 1872',
+          'Sale of Goods Act, 1930',
+          'Indian Partnership Act, 1932',
+        ],
+        units: [
+          {
+            title: 'Indemnity and Guarantee',
+            topics: ['Contract of indemnity', 'Contract of guarantee', 'Rights of surety'],
+          },
+          { title: 'Bailment and Pledge', topics: ['Duties of bailor and bailee', 'Pledge'] },
+          {
+            title: 'Agency',
+            topics: ['Creation of agency', 'Rights and duties of agents', 'Termination'],
+          },
+        ],
+      },
+      {
+        code: 'BL-205',
+        title: 'Law of Torts',
+        category: 'Law',
+        credits: 4,
+        summary:
+          'General principles of tortious liability, specific torts and consumer protection.',
+        statutes: ['Consumer Protection Act, 2019', 'Motor Vehicles Act, 1988'],
+        units: [
+          {
+            title: 'General Principles',
+            topics: ['Definition of tort', 'Damnum sine injuria', 'Injuria sine damno'],
+          },
+          { title: 'Defences', topics: ['Volenti non fit injuria', 'Act of God', 'Necessity'] },
+          { title: 'Specific Torts', topics: ['Negligence', 'Nuisance', 'Defamation', 'Trespass'] },
+          {
+            title: 'Strict and Absolute Liability',
+            topics: ['Rylands v Fletcher', 'M.C. Mehta v Union of India'],
+          },
+        ],
+      },
+    ],
+  },
+  {
+    number: 3,
+    year: 2,
+    subjects: [
+      {
+        code: 'BL-301',
+        title: 'Economics I',
+        category: 'Arts',
+        credits: 4,
+        summary: 'Principles of micro-economics relevant to law.',
+        units: [],
+      },
+      {
+        code: 'BL-302',
+        title: 'History II',
+        category: 'Arts',
+        credits: 4,
+        summary: 'Constitutional and legal history of India.',
+        units: [],
+      },
+      {
+        code: 'BL-303',
+        title: 'Constitutional Law I',
+        category: 'Law',
+        credits: 4,
+        summary: 'Preamble, citizenship, fundamental rights and directive principles.',
+        statutes: ['Constitution of India'],
+        units: [
+          {
+            title: 'Nature of the Constitution',
+            topics: ['Preamble', 'Federalism', 'Basic structure doctrine'],
+          },
+          {
+            title: 'Fundamental Rights',
+            topics: ['Article 14', 'Article 19', 'Article 21', 'Article 32'],
+          },
+          {
+            title: 'Directive Principles and Fundamental Duties',
+            topics: ['Part IV', 'Part IVA', 'Relationship with Part III'],
+          },
+        ],
+      },
+      {
+        code: 'BL-304',
+        title: 'Family Law I',
+        category: 'Law',
+        credits: 4,
+        summary: 'Marriage, divorce, maintenance and adoption under Hindu law.',
+        statutes: ['Hindu Marriage Act, 1955', 'Hindu Adoptions and Maintenance Act, 1956'],
+        units: [],
+      },
+      {
+        code: 'BL-305',
+        title: 'Law of Crimes I',
+        category: 'Law',
+        credits: 4,
+        summary: 'General principles of criminal liability and offences against the human body.',
+        statutes: ['Bharatiya Nyaya Sanhita, 2023'],
+        units: [],
+      },
+    ],
+  },
+  {
+    number: 4,
+    year: 2,
+    subjects: [
+      {
+        code: 'BL-401',
+        title: 'Economics II',
+        category: 'Arts',
+        credits: 4,
+        summary: 'Indian economy and public finance.',
+        units: [],
+      },
+      {
+        code: 'BL-402',
+        title: 'Constitutional Law II',
+        category: 'Law',
+        credits: 4,
+        summary: 'Union and State executive, legislature, judiciary and centre–state relations.',
+        statutes: ['Constitution of India'],
+        units: [],
+      },
+      {
+        code: 'BL-403',
+        title: 'Family Law II',
+        category: 'Law',
+        credits: 4,
+        summary: 'Muslim law and succession.',
+        units: [],
+      },
+      {
+        code: 'BL-404',
+        title: 'Law of Crimes II',
+        category: 'Law',
+        credits: 4,
+        summary: 'Offences against property, the State and public order.',
+        statutes: ['Bharatiya Nyaya Sanhita, 2023'],
+        units: [],
+      },
+      {
+        code: 'BL-405',
+        title: 'Jurisprudence',
+        category: 'Law',
+        credits: 4,
+        summary: 'Schools of jurisprudence, legal concepts, rights and duties.',
+        units: [],
+      },
+    ],
+  },
+  {
+    number: 5,
+    year: 3,
+    subjects: [
+      {
+        code: 'BL-501',
+        title: 'Administrative Law',
+        category: 'Law',
+        credits: 4,
+        summary:
+          'Delegated legislation, natural justice and judicial review of administrative action.',
+        units: [],
+      },
+      {
+        code: 'BL-502',
+        title: 'Property Law',
+        category: 'Law',
+        credits: 4,
+        summary: 'Transfer of property, sale, mortgage, lease and easements.',
+        statutes: ['Transfer of Property Act, 1882'],
+        units: [],
+      },
+      {
+        code: 'BL-503',
+        title: 'Criminal Procedure',
+        category: 'Law',
+        credits: 4,
+        summary: 'Investigation, trial, bail and appeals.',
+        statutes: ['Bharatiya Nagarik Suraksha Sanhita, 2023'],
+        units: [],
+      },
+      {
+        code: 'BL-504',
+        title: 'Environmental Law',
+        category: 'Law',
+        credits: 4,
+        summary: 'Constitutional and statutory framework for environmental protection.',
+        units: [],
+      },
+    ],
+  },
+  {
+    number: 6,
+    year: 3,
+    subjects: [
+      {
+        code: 'BL-601',
+        title: 'Law of Evidence',
+        category: 'Law',
+        credits: 4,
+        summary: 'Relevancy, admissibility, burden of proof and witnesses.',
+        statutes: ['Bharatiya Sakshya Adhiniyam, 2023'],
+        units: [],
+      },
+      {
+        code: 'BL-602',
+        title: 'Labour and Industrial Law',
+        category: 'Law',
+        credits: 4,
+        summary: 'Industrial relations, wages and social security.',
+        units: [],
+      },
+      {
+        code: 'BL-603',
+        title: 'Public International Law',
+        category: 'Law',
+        credits: 4,
+        summary: 'Sources, subjects, state recognition and treaties.',
+        units: [],
+      },
+      {
+        code: 'BL-604',
+        title: 'Company Law',
+        category: 'Law',
+        credits: 4,
+        summary: 'Incorporation, management and winding up of companies.',
+        statutes: ['Companies Act, 2013'],
+        units: [],
+      },
+    ],
+  },
+  {
+    number: 7,
+    year: 4,
+    subjects: [
+      {
+        code: 'BL-701',
+        title: 'Civil Procedure and Limitation',
+        category: 'Law',
+        credits: 4,
+        summary: 'Suits, pleadings, decrees, execution and limitation periods.',
+        statutes: ['Code of Civil Procedure, 1908', 'Limitation Act, 1963'],
+        units: [],
+      },
+      {
+        code: 'BL-702',
+        title: 'Taxation Law',
+        category: 'Law',
+        credits: 4,
+        summary: 'Direct and indirect taxation.',
+        units: [],
+      },
+      {
+        code: 'BL-703',
+        title: 'Interpretation of Statutes',
+        category: 'Law',
+        credits: 4,
+        summary: 'Rules and aids to interpretation.',
+        units: [],
+      },
+      {
+        code: 'BL-704',
+        title: 'Elective I',
+        category: 'Elective',
+        credits: 4,
+        summary: 'Optional paper chosen as per university offerings.',
+        units: [],
+      },
+    ],
+  },
+  {
+    number: 8,
+    year: 4,
+    subjects: [
+      {
+        code: 'BL-801',
+        title: 'Alternative Dispute Resolution',
+        category: 'Clinical',
+        credits: 4,
+        summary: 'Arbitration, conciliation, mediation and negotiation.',
+        statutes: ['Arbitration and Conciliation Act, 1996'],
+        units: [],
+      },
+      {
+        code: 'BL-802',
+        title: 'Intellectual Property Law',
+        category: 'Law',
+        credits: 4,
+        summary: 'Copyright, patents, trademarks and designs.',
+        units: [],
+      },
+      {
+        code: 'BL-803',
+        title: 'Human Rights Law',
+        category: 'Law',
+        credits: 4,
+        summary: 'International and national human rights framework.',
+        units: [],
+      },
+      {
+        code: 'BL-804',
+        title: 'Elective II',
+        category: 'Elective',
+        credits: 4,
+        summary: 'Optional paper chosen as per university offerings.',
+        units: [],
+      },
+    ],
+  },
+  {
+    number: 9,
+    year: 5,
+    subjects: [
+      {
+        code: 'BL-901',
+        title: 'Professional Ethics and Professional Accounting System',
+        category: 'Clinical',
+        credits: 4,
+        summary: 'Advocates’ duties, Bar Council rules and contempt of court.',
+        statutes: ['Advocates Act, 1961'],
+        units: [],
+      },
+      {
+        code: 'BL-902',
+        title: 'Drafting, Pleading and Conveyancing',
+        category: 'Clinical',
+        credits: 4,
+        summary: 'Drafting of civil and criminal pleadings and conveyancing deeds.',
+        units: [],
+      },
+      {
+        code: 'BL-903',
+        title: 'Elective III',
+        category: 'Elective',
+        credits: 4,
+        summary: 'Optional paper chosen as per university offerings.',
+        units: [],
+      },
+    ],
+  },
+  {
+    number: 10,
+    year: 5,
+    subjects: [
+      {
+        code: 'BL-1001',
+        title: 'Moot Court, Pre-Trial Preparation and Internship',
+        category: 'Clinical',
+        credits: 4,
+        summary: 'Moot courts, observing trials, client interviewing and internship diary.',
+        units: [],
+      },
+      {
+        code: 'BL-1002',
+        title: 'Legal Aid and Para-Legal Services',
+        category: 'Clinical',
+        credits: 4,
+        summary: 'Legal aid camps, Lok Adalats and legal literacy.',
+        statutes: ['Legal Services Authorities Act, 1987'],
+        units: [],
+      },
+      {
+        code: 'BL-1003',
+        title: 'Elective IV',
+        category: 'Elective',
+        credits: 4,
+        summary: 'Optional paper chosen as per university offerings.',
+        units: [],
+      },
+    ],
+  },
+];

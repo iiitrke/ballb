@@ -1,0 +1,53 @@
+<ballb-page-header
+  eyebrow="Shakambhari University"
+  heading="BA.LLB Learning Portal"
+  subtitle="Semester-wise subjects, unit outlines and a legal glossary for the five-year integrated BA.LLB programme."
+/>
+
+<section class="stats" aria-label="Programme at a glance">
+  <div class="card stat">
+    <span class="stat__value">5</span>
+    <span class="muted">Years</span>
+  </div>
+  <div class="card stat">
+    <span class="stat__value">{{ semesterCount() }}</span>
+    <span class="muted">Semesters</span>
+  </div>
+  <div class="card stat">
+    <span class="stat__value">{{ subjectCount() }}</span>
+    <span class="muted">Subjects listed</span>
+  </div>
+</section>
+
+<section aria-labelledby="years-heading">
+  <h2 id="years-heading">Browse by year</h2>
+  <div class="grid">
+    @for (year of years(); track year.year) {
+    <article class="card">
+      <h3>Year {{ year.year }}</h3>
+      <ul class="year-links">
+        @for (semester of year.semesters; track semester.number) {
+        <li>
+          <a [routerLink]="['/semesters', semester.number]"> Semester {{ semester.number }} </a>
+          <span class="muted"> &middot; {{ semester.subjects.length }} subjects</span>
+        </li>
+        }
+      </ul>
+    </article>
+    }
+  </div>
+</section>
+
+<section class="quick-links" aria-labelledby="tools-heading">
+  <h2 id="tools-heading">Study tools</h2>
+  <div class="grid">
+    <a class="card" routerLink="/semesters">
+      <h3>All semesters</h3>
+      <p class="muted">See every semester with its subjects, credits and unit outlines.</p>
+    </a>
+    <a class="card" routerLink="/glossary">
+      <h3>Legal glossary</h3>
+      <p class="muted">Search common Latin maxims and legal terms with plain-English meanings.</p>
+    </a>
+  </div>
+</section>

@@ -1,0 +1,9 @@
+{
+  "name": "curriculum-feature",
+  "$schema": "../../../node_modules/nx/schemas/project-schema.json",
+  "sourceRoot": "libs/curriculum/feature/src",
+  "prefix": "ballb",
+  "projectType": "library",
+  "tags": ["type:feature", "scope:curriculum"],
+  "targets": {}
+}

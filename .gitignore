@@ -1,0 +1,37 @@
+# Dependencies
+node_modules
+
+# Build output
+/dist
+/tmp
+/out-tsc
+/coverage
+
+# Nx / Angular caches
+.nx/cache
+.nx/workspace-data
+.angular
+
+# IDEs and editors
+/.idea
+.project
+.classpath
+*.launch
+.settings/
+*.sublime-workspace
+.vscode/*
+!.vscode/settings.json
+!.vscode/tasks.json
+!.vscode/launch.json
+!.vscode/extensions.json
+
+# Misc
+npm-debug.log
+yarn-error.log
+testem.log
+.env
+.env.local
+
+# System files
+.DS_Store
+Thumbs.db

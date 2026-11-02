@@ -1,0 +1,42 @@
+<a class="skip-link" href="#main-content">Skip to main content</a>
+
+<header class="site-header">
+  <div class="container site-header__inner">
+    <a class="brand" routerLink="/">
+      <img class="brand__logo" src="favicon.svg" alt="" width="36" height="36" />
+      <span class="brand__text">
+        <strong>BA.LLB Learning Portal</strong>
+        <small>{{ universityName }}</small>
+      </span>
+    </a>
+
+    <nav class="site-nav" aria-label="Main navigation">
+      @for (link of navLinks; track link.path) {
+      <a
+        [routerLink]="link.path"
+        routerLinkActive="is-active"
+        [routerLinkActiveOptions]="{ exact: link.exact }"
+        ariaCurrentWhenActive="page"
+      >
+        {{ link.label }}
+      </a>
+      }
+    </nav>
+  </div>
+</header>
+
+<main id="main-content" class="container site-main">
+  <router-outlet />
+</main>
+
+<footer class="site-footer">
+  <div class="container">
+    <p>
+      &copy; {{ currentYear }} BA.LLB Learning Portal &middot; For students of {{ universityName }}.
+    </p>
+    <p class="site-footer__note">
+      Study material here is a learning aid. Always refer to the official university syllabus and
+      bare acts for examinations.
+    </p>
+  </div>
+</footer>
