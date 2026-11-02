@@ -2,10 +2,11 @@ import { ChangeDetectionStrategy, Component, computed, inject, input } from '@an
 import { RouterLink } from '@angular/router';
 import { CurriculumService } from '@ballb/curriculum/data-access';
 import { PageHeader } from '@ballb/shared/ui';
+import { SubjectBadges } from '../subject-badges/subject-badges';
 
 @Component({
   selector: 'ballb-semester-detail-page',
-  imports: [RouterLink, PageHeader],
+  imports: [RouterLink, PageHeader, SubjectBadges],
   template: `
     <nav aria-label="Breadcrumb">
       <ol class="breadcrumb">
@@ -19,16 +20,35 @@ import { PageHeader } from '@ballb/shared/ui';
       <ballb-page-header
         [eyebrow]="'Year ' + sem.year"
         [heading]="'Semester ' + sem.number"
-        [subtitle]="sem.subjects.length + ' subjects · ' + totalCredits() + ' credits'"
+        [subtitle]="subtitle()"
       />
+
+      @if (sem.note) {
+        <p class="notice note">{{ sem.note }}</p>
+      }
+
+      @if (hasOptional()) {
+        <p class="muted">
+          Papers marked <strong>Optional</strong> that share the same paper number are alternatives:
+          students take one of them.
+        </p>
+      }
 
       <div class="grid">
         @for (subject of sem.subjects; track subject.code) {
           <a class="card" [routerLink]="[subject.code]">
-            <span class="badge">{{ subject.category }}</span>
+            <ballb-subject-badges [subject]="subject" />
             <h3>{{ subject.title }}</h3>
             <p class="muted">{{ subject.summary }}</p>
-            <small class="muted">{{ subject.code }} · {{ subject.credits }} credits</small>
+            <small class="muted">
+              {{ subject.source === 'official' ? 'Paper Code ' : '' }}{{ subject.code }}
+              @if (subject.credits) {
+                · {{ subject.credits }} credits
+              }
+              @if (subject.maxMarks) {
+                · Max. marks {{ subject.maxMarks }}
+              }
+            </small>
           </a>
         }
       </div>
@@ -51,6 +71,9 @@ import { PageHeader } from '@ballb/shared/ui';
     }
   `,
   styles: `
+    .note {
+      margin-bottom: 1.25rem;
+    }
     .pager {
       display: flex;
       margin-top: 2rem;
@@ -68,8 +91,15 @@ export class SemesterDetailPage {
   readonly semester = input.required<string>();
 
   protected readonly data = computed(() => this.curriculum.semester(Number(this.semester())));
-  protected readonly totalCredits = computed(
-    () => this.data()?.subjects.reduce((sum, s) => sum + s.credits, 0) ?? 0,
-  );
   protected readonly lastSemester = computed(() => this.curriculum.semesters().length);
+  protected readonly hasOptional = computed(
+    () => this.data()?.subjects.some((s) => s.optional) ?? false,
+  );
+
+  protected readonly subtitle = computed(() => {
+    const subjects = this.data()?.subjects ?? [];
+    const credits = subjects.reduce((sum, s) => sum + (s.credits ?? 0), 0);
+    const count = `${subjects.length} ${subjects.length === 1 ? 'paper' : 'papers'}`;
+    return credits > 0 ? `${count} · ${credits} credits` : count;
+  });
 }

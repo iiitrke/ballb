@@ -1,12 +1,16 @@
 import { Semester } from './curriculum.models';
+import { OFFICIAL_PAPERS } from './official-papers.data';
 
 /**
- * SAMPLE CURRICULUM — PLACEHOLDER DATA.
+ * CURRICULUM DATA.
  *
- * This is an illustrative BA.LLB structure based on subjects commonly taught in
- * five-year integrated law programmes in India. It is NOT the official
- * Shakambhari University syllabus. Replace subject codes, titles, credits and
- * units with the university's approved syllabus before students rely on it.
+ * Semesters 1–9 are SAMPLE PLACEHOLDER DATA (source: 'sample'). Official
+ * syllabus papers (source: 'official') live in official-papers.data.ts.
+ *
+ * The sample entries are an illustrative BA.LLB structure based on subjects
+ * commonly taught in five-year integrated law programmes in India. They are NOT
+ * the official Shakambhari University syllabus. Replace them with official
+ * papers (see official-papers.data.ts) as syllabus pages become available.
  */
 export const CURRICULUM: Semester[] = [
   {
@@ -17,6 +21,7 @@ export const CURRICULUM: Semester[] = [
         code: 'BL-101',
         title: 'General English I',
         category: 'Language',
+        source: 'sample',
         credits: 4,
         summary:
           'Grammar, comprehension and writing skills with an introduction to legal language.',
@@ -39,6 +44,7 @@ export const CURRICULUM: Semester[] = [
         code: 'BL-102',
         title: 'Political Science I (Political Theory)',
         category: 'Arts',
+        source: 'sample',
         credits: 4,
         summary:
           'Nature and scope of political science, the State, sovereignty, liberty, equality and justice.',
@@ -58,6 +64,7 @@ export const CURRICULUM: Semester[] = [
         code: 'BL-103',
         title: 'Sociology I',
         category: 'Arts',
+        source: 'sample',
         credits: 4,
         summary: 'Basic sociological concepts and the relationship between society and law.',
         units: [
@@ -69,6 +76,7 @@ export const CURRICULUM: Semester[] = [
         code: 'BL-104',
         title: 'Law of Contract I',
         category: 'Law',
+        source: 'sample',
         credits: 4,
         summary:
           'General principles of contract: formation, capacity, free consent, consideration and void agreements.',
@@ -100,6 +108,7 @@ export const CURRICULUM: Semester[] = [
         code: 'BL-105',
         title: 'Legal Methods',
         category: 'Law',
+        source: 'sample',
         credits: 4,
         summary: 'Sources of law, legal reasoning, reading judgments and basic legal research.',
         units: [
@@ -118,6 +127,7 @@ export const CURRICULUM: Semester[] = [
         code: 'BL-201',
         title: 'General English II',
         category: 'Language',
+        source: 'sample',
         credits: 4,
         summary: 'Advanced writing, legal correspondence and presentation skills.',
         units: [],
@@ -126,6 +136,7 @@ export const CURRICULUM: Semester[] = [
         code: 'BL-202',
         title: 'Political Science II (Indian Government and Politics)',
         category: 'Arts',
+        source: 'sample',
         credits: 4,
         summary: 'Structure and working of Indian political institutions.',
         units: [],
@@ -134,6 +145,7 @@ export const CURRICULUM: Semester[] = [
         code: 'BL-203',
         title: 'History I',
         category: 'Arts',
+        source: 'sample',
         credits: 4,
         summary: 'Indian history with emphasis on legal and administrative developments.',
         units: [],
@@ -142,6 +154,7 @@ export const CURRICULUM: Semester[] = [
         code: 'BL-204',
         title: 'Law of Contract II (Specific Contracts)',
         category: 'Law',
+        source: 'sample',
         credits: 4,
         summary: 'Indemnity, guarantee, bailment, pledge, agency, sale of goods and partnership.',
         statutes: [
@@ -165,6 +178,7 @@ export const CURRICULUM: Semester[] = [
         code: 'BL-205',
         title: 'Law of Torts',
         category: 'Law',
+        source: 'sample',
         credits: 4,
         summary:
           'General principles of tortious liability, specific torts and consumer protection.',
@@ -192,6 +206,7 @@ export const CURRICULUM: Semester[] = [
         code: 'BL-301',
         title: 'Economics I',
         category: 'Arts',
+        source: 'sample',
         credits: 4,
         summary: 'Principles of micro-economics relevant to law.',
         units: [],
@@ -200,6 +215,7 @@ export const CURRICULUM: Semester[] = [
         code: 'BL-302',
         title: 'History II',
         category: 'Arts',
+        source: 'sample',
         credits: 4,
         summary: 'Constitutional and legal history of India.',
         units: [],
@@ -208,6 +224,7 @@ export const CURRICULUM: Semester[] = [
         code: 'BL-303',
         title: 'Constitutional Law I',
         category: 'Law',
+        source: 'sample',
         credits: 4,
         summary: 'Preamble, citizenship, fundamental rights and directive principles.',
         statutes: ['Constitution of India'],
@@ -230,6 +247,7 @@ export const CURRICULUM: Semester[] = [
         code: 'BL-304',
         title: 'Family Law I',
         category: 'Law',
+        source: 'sample',
         credits: 4,
         summary: 'Marriage, divorce, maintenance and adoption under Hindu law.',
         statutes: ['Hindu Marriage Act, 1955', 'Hindu Adoptions and Maintenance Act, 1956'],
@@ -239,6 +257,7 @@ export const CURRICULUM: Semester[] = [
         code: 'BL-305',
         title: 'Law of Crimes I',
         category: 'Law',
+        source: 'sample',
         credits: 4,
         summary: 'General principles of criminal liability and offences against the human body.',
         statutes: ['Bharatiya Nyaya Sanhita, 2023'],
@@ -254,6 +273,7 @@ export const CURRICULUM: Semester[] = [
         code: 'BL-401',
         title: 'Economics II',
         category: 'Arts',
+        source: 'sample',
         credits: 4,
         summary: 'Indian economy and public finance.',
         units: [],
@@ -262,6 +282,7 @@ export const CURRICULUM: Semester[] = [
         code: 'BL-402',
         title: 'Constitutional Law II',
         category: 'Law',
+        source: 'sample',
         credits: 4,
         summary: 'Union and State executive, legislature, judiciary and centre–state relations.',
         statutes: ['Constitution of India'],
@@ -271,6 +292,7 @@ export const CURRICULUM: Semester[] = [
         code: 'BL-403',
         title: 'Family Law II',
         category: 'Law',
+        source: 'sample',
         credits: 4,
         summary: 'Muslim law and succession.',
         units: [],
@@ -279,6 +301,7 @@ export const CURRICULUM: Semester[] = [
         code: 'BL-404',
         title: 'Law of Crimes II',
         category: 'Law',
+        source: 'sample',
         credits: 4,
         summary: 'Offences against property, the State and public order.',
         statutes: ['Bharatiya Nyaya Sanhita, 2023'],
@@ -288,6 +311,7 @@ export const CURRICULUM: Semester[] = [
         code: 'BL-405',
         title: 'Jurisprudence',
         category: 'Law',
+        source: 'sample',
         credits: 4,
         summary: 'Schools of jurisprudence, legal concepts, rights and duties.',
         units: [],
@@ -302,6 +326,7 @@ export const CURRICULUM: Semester[] = [
         code: 'BL-501',
         title: 'Administrative Law',
         category: 'Law',
+        source: 'sample',
         credits: 4,
         summary:
           'Delegated legislation, natural justice and judicial review of administrative action.',
@@ -311,6 +336,7 @@ export const CURRICULUM: Semester[] = [
         code: 'BL-502',
         title: 'Property Law',
         category: 'Law',
+        source: 'sample',
         credits: 4,
         summary: 'Transfer of property, sale, mortgage, lease and easements.',
         statutes: ['Transfer of Property Act, 1882'],
@@ -320,6 +346,7 @@ export const CURRICULUM: Semester[] = [
         code: 'BL-503',
         title: 'Criminal Procedure',
         category: 'Law',
+        source: 'sample',
         credits: 4,
         summary: 'Investigation, trial, bail and appeals.',
         statutes: ['Bharatiya Nagarik Suraksha Sanhita, 2023'],
@@ -329,6 +356,7 @@ export const CURRICULUM: Semester[] = [
         code: 'BL-504',
         title: 'Environmental Law',
         category: 'Law',
+        source: 'sample',
         credits: 4,
         summary: 'Constitutional and statutory framework for environmental protection.',
         units: [],
@@ -343,6 +371,7 @@ export const CURRICULUM: Semester[] = [
         code: 'BL-601',
         title: 'Law of Evidence',
         category: 'Law',
+        source: 'sample',
         credits: 4,
         summary: 'Relevancy, admissibility, burden of proof and witnesses.',
         statutes: ['Bharatiya Sakshya Adhiniyam, 2023'],
@@ -352,6 +381,7 @@ export const CURRICULUM: Semester[] = [
         code: 'BL-602',
         title: 'Labour and Industrial Law',
         category: 'Law',
+        source: 'sample',
         credits: 4,
         summary: 'Industrial relations, wages and social security.',
         units: [],
@@ -360,6 +390,7 @@ export const CURRICULUM: Semester[] = [
         code: 'BL-603',
         title: 'Public International Law',
         category: 'Law',
+        source: 'sample',
         credits: 4,
         summary: 'Sources, subjects, state recognition and treaties.',
         units: [],
@@ -368,6 +399,7 @@ export const CURRICULUM: Semester[] = [
         code: 'BL-604',
         title: 'Company Law',
         category: 'Law',
+        source: 'sample',
         credits: 4,
         summary: 'Incorporation, management and winding up of companies.',
         statutes: ['Companies Act, 2013'],
@@ -383,6 +415,7 @@ export const CURRICULUM: Semester[] = [
         code: 'BL-701',
         title: 'Civil Procedure and Limitation',
         category: 'Law',
+        source: 'sample',
         credits: 4,
         summary: 'Suits, pleadings, decrees, execution and limitation periods.',
         statutes: ['Code of Civil Procedure, 1908', 'Limitation Act, 1963'],
@@ -392,6 +425,7 @@ export const CURRICULUM: Semester[] = [
         code: 'BL-702',
         title: 'Taxation Law',
         category: 'Law',
+        source: 'sample',
         credits: 4,
         summary: 'Direct and indirect taxation.',
         units: [],
@@ -400,6 +434,7 @@ export const CURRICULUM: Semester[] = [
         code: 'BL-703',
         title: 'Interpretation of Statutes',
         category: 'Law',
+        source: 'sample',
         credits: 4,
         summary: 'Rules and aids to interpretation.',
         units: [],
@@ -408,6 +443,7 @@ export const CURRICULUM: Semester[] = [
         code: 'BL-704',
         title: 'Elective I',
         category: 'Elective',
+        source: 'sample',
         credits: 4,
         summary: 'Optional paper chosen as per university offerings.',
         units: [],
@@ -422,6 +458,7 @@ export const CURRICULUM: Semester[] = [
         code: 'BL-801',
         title: 'Alternative Dispute Resolution',
         category: 'Clinical',
+        source: 'sample',
         credits: 4,
         summary: 'Arbitration, conciliation, mediation and negotiation.',
         statutes: ['Arbitration and Conciliation Act, 1996'],
@@ -431,6 +468,7 @@ export const CURRICULUM: Semester[] = [
         code: 'BL-802',
         title: 'Intellectual Property Law',
         category: 'Law',
+        source: 'sample',
         credits: 4,
         summary: 'Copyright, patents, trademarks and designs.',
         units: [],
@@ -439,6 +477,7 @@ export const CURRICULUM: Semester[] = [
         code: 'BL-803',
         title: 'Human Rights Law',
         category: 'Law',
+        source: 'sample',
         credits: 4,
         summary: 'International and national human rights framework.',
         units: [],
@@ -447,6 +486,7 @@ export const CURRICULUM: Semester[] = [
         code: 'BL-804',
         title: 'Elective II',
         category: 'Elective',
+        source: 'sample',
         credits: 4,
         summary: 'Optional paper chosen as per university offerings.',
         units: [],
@@ -461,6 +501,7 @@ export const CURRICULUM: Semester[] = [
         code: 'BL-901',
         title: 'Professional Ethics and Professional Accounting System',
         category: 'Clinical',
+        source: 'sample',
         credits: 4,
         summary: 'Advocates’ duties, Bar Council rules and contempt of court.',
         statutes: ['Advocates Act, 1961'],
@@ -470,6 +511,7 @@ export const CURRICULUM: Semester[] = [
         code: 'BL-902',
         title: 'Drafting, Pleading and Conveyancing',
         category: 'Clinical',
+        source: 'sample',
         credits: 4,
         summary: 'Drafting of civil and criminal pleadings and conveyancing deeds.',
         units: [],
@@ -478,6 +520,7 @@ export const CURRICULUM: Semester[] = [
         code: 'BL-903',
         title: 'Elective III',
         category: 'Elective',
+        source: 'sample',
         credits: 4,
         summary: 'Optional paper chosen as per university offerings.',
         units: [],
@@ -487,32 +530,7 @@ export const CURRICULUM: Semester[] = [
   {
     number: 10,
     year: 5,
-    subjects: [
-      {
-        code: 'BL-1001',
-        title: 'Moot Court, Pre-Trial Preparation and Internship',
-        category: 'Clinical',
-        credits: 4,
-        summary: 'Moot courts, observing trials, client interviewing and internship diary.',
-        units: [],
-      },
-      {
-        code: 'BL-1002',
-        title: 'Legal Aid and Para-Legal Services',
-        category: 'Clinical',
-        credits: 4,
-        summary: 'Legal aid camps, Lok Adalats and legal literacy.',
-        statutes: ['Legal Services Authorities Act, 1987'],
-        units: [],
-      },
-      {
-        code: 'BL-1003',
-        title: 'Elective IV',
-        category: 'Elective',
-        credits: 4,
-        summary: 'Optional paper chosen as per university offerings.',
-        units: [],
-      },
-    ],
+    note: 'Papers III–V below are from the official Shakambhari University syllabus. The semester they belong to is not printed on the syllabus pages, so their placement in Semester 10 still needs to be confirmed. Papers I and II have not been added yet.',
+    subjects: OFFICIAL_PAPERS,
   },
 ];

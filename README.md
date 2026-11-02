@@ -6,9 +6,13 @@ subjects, unit outlines, statutes to read, and a searchable legal glossary.
 Built as an [Nx](https://nx.dev) monorepo with Angular 21 (standalone components, signals,
 zoneless change detection).
 
-> **Content notice:** The curriculum in `libs/curriculum/data-access/src/lib/curriculum.data.ts`
-> is **sample placeholder data**. Replace it with the official Shakambhari University BA.LLB
-> syllabus before students rely on it.
+> **Content notice:** Each subject has a `source` of `official` or `sample`, and the UI badges it
+> accordingly.
+>
+> - **Official:** `libs/curriculum/data-access/src/lib/official-papers.data.ts` holds papers
+>   transcribed from the Shakambhari University syllabus (codes 1078204, 1078205, 1078206,
+>   1078280). They are placed in Semester 10 until their semester is confirmed.
+> - **Sample:** everything else in `curriculum.data.ts` is placeholder content to be replaced.
 
 ## Prerequisites
 

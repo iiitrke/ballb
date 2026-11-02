@@ -2,10 +2,11 @@ import { ChangeDetectionStrategy, Component, computed, inject, input } from '@an
 import { RouterLink } from '@angular/router';
 import { CurriculumService } from '@ballb/curriculum/data-access';
 import { PageHeader } from '@ballb/shared/ui';
+import { SubjectBadges } from '../subject-badges/subject-badges';
 
 @Component({
   selector: 'ballb-subject-detail-page',
-  imports: [RouterLink, PageHeader],
+  imports: [RouterLink, PageHeader, SubjectBadges],
   template: `
     <nav aria-label="Breadcrumb">
       <ol class="breadcrumb">
@@ -19,11 +20,14 @@ import { PageHeader } from '@ballb/shared/ui';
     </nav>
 
     @if (subject(); as sub) {
-      <ballb-page-header
-        [eyebrow]="sub.code + ' · ' + sub.category + ' · ' + sub.credits + ' credits'"
-        [heading]="sub.title"
-        [subtitle]="sub.summary"
-      />
+      <ballb-subject-badges [subject]="sub" />
+      <ballb-page-header [eyebrow]="eyebrow()" [heading]="sub.title" [subtitle]="sub.summary" />
+
+      @if (sub.source === 'sample') {
+        <p class="notice section">
+          This is sample content, not the official Shakambhari University syllabus.
+        </p>
+      }
 
       @if (sub.statutes?.length) {
         <section class="card section">
@@ -37,11 +41,14 @@ import { PageHeader } from '@ballb/shared/ui';
       }
 
       <section class="section">
-        <h2>Unit outline</h2>
+        <h2>{{ sub.practical ? 'Course components' : 'Unit outline' }}</h2>
         @for (unit of sub.units; track unit.title; let i = $index) {
           <details class="card unit" [open]="i === 0">
             <summary>
-              <strong>Unit {{ i + 1 }}:</strong> {{ unit.title }}
+              @if (!sub.practical) {
+                <strong>Unit {{ i + 1 }}:</strong>
+              }
+              {{ unit.title }}
             </summary>
             <ul>
               @for (topic of unit.topics; track topic) {
@@ -56,6 +63,49 @@ import { PageHeader } from '@ballb/shared/ui';
           </p>
         }
       </section>
+
+      @if (sub.assessment?.length) {
+        <section class="card section">
+          <h2>Marking scheme</h2>
+          @if (sub.maxMarks) {
+            <p class="muted">Maximum marks: {{ sub.maxMarks }}</p>
+          }
+          <table class="table">
+            <thead>
+              <tr>
+                <th scope="col">Component</th>
+                <th scope="col">Marks</th>
+                <th scope="col">Details</th>
+              </tr>
+            </thead>
+            <tbody>
+              @for (row of sub.assessment; track row.component) {
+                <tr>
+                  <td>{{ row.component }}</td>
+                  <td>{{ row.marks }}</td>
+                  <td>{{ row.details }}</td>
+                </tr>
+              }
+            </tbody>
+          </table>
+          @if (sub.assessmentNote) {
+            <p class="muted small">{{ sub.assessmentNote }}</p>
+          }
+        </section>
+      }
+
+      @if (sub.books?.length) {
+        <section class="card section">
+          <h2>Books recommended</h2>
+          <ul class="books">
+            @for (book of sub.books; track book.author + book.title) {
+              <li>
+                {{ book.author }}, <cite>{{ book.title }}</cite>
+              </li>
+            }
+          </ul>
+        </section>
+      }
     } @else {
       <ballb-page-header heading="Subject not found" />
       <p>
@@ -75,6 +125,13 @@ import { PageHeader } from '@ballb/shared/ui';
     summary {
       cursor: pointer;
     }
+    .small {
+      font-size: 0.85rem;
+      margin-bottom: 0;
+    }
+    .books li {
+      margin-bottom: 0.35rem;
+    }
   `,
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
@@ -89,4 +146,13 @@ export class SubjectDetailPage {
   protected readonly subject = computed(() =>
     this.curriculum.subject(Number(this.semester()), this.code()),
   );
+
+  protected readonly eyebrow = computed(() => {
+    const sub = this.subject();
+    if (!sub) return '';
+    const parts = [sub.source === 'official' ? `Paper Code ${sub.code}` : sub.code];
+    if (sub.credits) parts.push(`${sub.credits} credits`);
+    if (sub.maxMarks) parts.push(`Max. marks ${sub.maxMarks}`);
+    return parts.join(' · ');
+  });
 }
