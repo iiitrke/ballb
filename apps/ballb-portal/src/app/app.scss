@@ -73,6 +73,33 @@
   }
 }
 
+.lang-switch {
+  display: inline-flex;
+  border: 1px solid rgba(255, 255, 255, 0.4);
+  border-radius: var(--radius);
+  overflow: hidden;
+
+  button {
+    appearance: none;
+    border: 0;
+    background: transparent;
+    color: #fff;
+    font: inherit;
+    padding: 0.4rem 0.75rem;
+    cursor: pointer;
+
+    &:hover {
+      background: rgba(255, 255, 255, 0.12);
+    }
+
+    &.is-active {
+      background: var(--color-accent);
+      color: var(--color-primary-dark);
+      font-weight: 600;
+    }
+  }
+}
+
 .site-main {
   flex: 1;
   padding-block: 2rem;
