@@ -1,12 +1,12 @@
 import { ChangeDetectionStrategy, Component, computed, inject, input } from '@angular/core';
 import { RouterLink } from '@angular/router';
 import { CurriculumService } from '@ballb/curriculum/data-access';
-import { PageHeader } from '@ballb/shared/ui';
+import { PageHeader, TranslatePipe } from '@ballb/shared/ui';
 import { SubjectBadges } from '../subject-badges/subject-badges';
 
 @Component({
   selector: 'ballb-subject-detail-page',
-  imports: [RouterLink, PageHeader, SubjectBadges],
+  imports: [RouterLink, PageHeader, SubjectBadges, TranslatePipe],
   template: `
     <nav aria-label="Breadcrumb">
       <ol class="breadcrumb">
@@ -52,7 +52,7 @@ import { SubjectBadges } from '../subject-badges/subject-badges';
             </summary>
             <ul>
               @for (topic of unit.topics; track topic) {
-                <li>{{ topic }}</li>
+                <li>{{ topic | tr }}</li>
               }
             </ul>
           </details>

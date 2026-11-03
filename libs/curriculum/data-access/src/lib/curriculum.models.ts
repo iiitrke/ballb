@@ -1,6 +1,18 @@
 /** Broad grouping used to colour/badge subjects in the UI. */
 export type SubjectCategory = 'Law' | 'Arts' | 'Language' | 'Clinical' | 'Elective';
 
+/** A piece of content available in more than one language. `hi` is optional so content can be added gradually. */
+export interface LocalizedText {
+  en: string;
+  hi?: string;
+}
+
+/**
+ * A translatable piece of text: either a plain (English-only) string or a
+ * localized object. The `tr` pipe (shared/ui) resolves it to the active language.
+ */
+export type Text = string | LocalizedText;
+
 /**
  * Where a subject's content comes from.
  * - `official`: transcribed from the Shakambhari University syllabus document.
@@ -10,7 +22,8 @@ export type ContentSource = 'official' | 'sample';
 
 export interface StudyUnit {
   title: string;
-  topics: string[];
+  /** Bullet points. Each may be a plain string or a bilingual {@link LocalizedText}. */
+  topics: Text[];
 }
 
 export interface RecommendedBook {
