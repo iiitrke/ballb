@@ -12,7 +12,8 @@ confirmed · _Open_ = not decided, ask first.
 ## Goal
 
 Build a learning portal for BA.LLB students of Shakambhari University where they can browse semesters,
-read subject outlines and search a legal glossary, in English or हिंदी. Students can create their own accounts.
+read subject outlines and search subjects and a legal glossary, in English or हिंदी. Public content is open
+to everyone. Anyone can create an account, which prepares the portal for paid content and offers later.
 Admins manage all content, sections and menus from an admin dashboard, and changes reach students
 without rebuilding the website.
 
@@ -21,6 +22,9 @@ The existing Angular prototype in this repository supplies the starting content 
 ## Out of scope
 
 - Writing new content or new Hindi translations.
+- Paid content, payments and subscriptions. Planned for the future; accounts (R11) prepare for them.
+- Affiliate marketing and offers features. Planned for the future; R11.10 collects consent now.
+- Drafts, scheduled publishing and version history. Admin changes go live when saved (R9.10).
 - Searching inside the text of subject content. Search covers subject codes and titles (R12) and the glossary (R3).
 
 ## Constraints
@@ -122,33 +126,39 @@ and production, so that I can work quickly and release safely.
 
 ### R8. Admins sign in to a dashboard
 
-**User story:** As an admin, I want a private dashboard that only admins can use, so that content is
-managed safely in one place.
+**User story:** As an admin, I want a private dashboard where each admin has the right level of access, so
+that content is managed safely in one place.
 
-| ID   | Acceptance criterion                                                                                                           | Status   |
-| ---- | ------------------------------------------------------------------------------------------------------------------------------ | -------- |
-| R8.1 | THE SYSTEM SHALL provide an admin dashboard at `/admin`.                                                                       | Proposed |
-| R8.2 | WHEN someone who is not signed in opens the dashboard, THE SYSTEM SHALL ask them to sign in.                                   | Agreed   |
-| R8.3 | THE SYSTEM SHALL allow only admin accounts to open the dashboard and change content; student accounts cannot.                  | Agreed   |
-| R8.4 | IF sign-in fails 5 times within 15 minutes for one account, THEN THE SYSTEM SHALL block that account's sign-in for 15 minutes. | Proposed |
-| R8.5 | WHEN an admin is inactive for 30 minutes, THE SYSTEM SHALL sign them out.                                                      | Proposed |
+| ID    | Acceptance criterion                                                                                                                                                             | Status   |
+| ----- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | -------- |
+| R8.1  | THE SYSTEM SHALL provide an admin dashboard at `/admin`.                                                                                                                         | Proposed |
+| R8.2  | WHEN someone who is not signed in opens the dashboard, THE SYSTEM SHALL ask them to sign in.                                                                                     | Agreed   |
+| R8.3  | THE SYSTEM SHALL allow only admin accounts to open the dashboard and change content; student accounts cannot.                                                                    | Agreed   |
+| R8.4  | THE SYSTEM SHALL support several admin accounts, each with a role.                                                                                                               | Agreed   |
+| R8.5  | THE SYSTEM SHALL have two roles: **Super admin** (everything, including managing admin accounts and roles) and **Editor** (content, sections and menus, but not admin accounts). | Proposed |
+| R8.6  | WHEN a super admin adds an admin, changes an admin's role or disables an admin, THE SYSTEM SHALL apply it from that admin's next action.                                         | Proposed |
+| R8.7  | THE SYSTEM SHALL let admins sign in with the same methods as students (R11.2).                                                                                                   | Proposed |
+| R8.8  | THE SYSTEM SHALL create the first super admin during installation, never through public sign-up.                                                                                 | Proposed |
+| R8.9  | IF sign-in fails 5 times within 15 minutes for one account, THEN THE SYSTEM SHALL block that account's sign-in for 15 minutes.                                                   | Proposed |
+| R8.10 | WHEN an admin is inactive for 30 minutes, THE SYSTEM SHALL sign them out.                                                                                                        | Proposed |
 
 ### R9. Admins create, modify and disable content
 
 **User story:** As an admin, I want to create, edit and disable semesters, subjects, glossary terms and
 pages, so that the portal always shows correct, current content.
 
-| ID   | Acceptance criterion                                                                                                      | Status   |
-| ---- | ------------------------------------------------------------------------------------------------------------------------- | -------- |
-| R9.1 | WHEN an admin creates a semester, subject, glossary term or page, THE SYSTEM SHALL save it and show it to students.       | Agreed   |
-| R9.2 | WHEN an admin edits any content item, THE SYSTEM SHALL save the change and show it to students within the time in R1.1.   | Agreed   |
-| R9.3 | WHEN an admin disables a content item, THE SYSTEM SHALL hide it from students without deleting it.                        | Agreed   |
-| R9.4 | WHEN an admin re-enables a disabled item, THE SYSTEM SHALL show it to students again.                                     | Proposed |
-| R9.5 | THE SYSTEM SHALL let admins write content in Markdown, with a preview of how students will see it.                        | Proposed |
-| R9.6 | THE SYSTEM SHALL let admins enter English and Hindi text side by side, with Hindi optional.                               | Proposed |
-| R9.7 | IF a required field is empty when an admin saves, THEN THE SYSTEM SHALL not save and SHALL show which fields are missing. | Proposed |
-| R9.8 | THE SYSTEM SHALL record which admin made each change and when.                                                            | Proposed |
-| R9.9 | WHILE a content item is disabled, THE SYSTEM SHALL still show it in the dashboard, marked as disabled.                    | Proposed |
+| ID    | Acceptance criterion                                                                                                      | Status   |
+| ----- | ------------------------------------------------------------------------------------------------------------------------- | -------- |
+| R9.1  | WHEN an admin creates a semester, subject, glossary term or page, THE SYSTEM SHALL save it and show it to students.       | Agreed   |
+| R9.2  | WHEN an admin edits any content item, THE SYSTEM SHALL save the change and show it to students within the time in R1.1.   | Agreed   |
+| R9.3  | WHEN an admin disables a content item, THE SYSTEM SHALL hide it from students without deleting it.                        | Agreed   |
+| R9.4  | WHEN an admin re-enables a disabled item, THE SYSTEM SHALL show it to students again.                                     | Proposed |
+| R9.5  | THE SYSTEM SHALL let admins write content in Markdown, with a preview of how students will see it.                        | Proposed |
+| R9.6  | THE SYSTEM SHALL let admins enter English and Hindi text side by side, with Hindi optional.                               | Proposed |
+| R9.7  | IF a required field is empty when an admin saves, THEN THE SYSTEM SHALL not save and SHALL show which fields are missing. | Proposed |
+| R9.8  | THE SYSTEM SHALL record which admin made each change and when.                                                            | Proposed |
+| R9.9  | WHILE a content item is disabled, THE SYSTEM SHALL still show it in the dashboard, marked as disabled.                    | Proposed |
+| R9.10 | WHEN an admin saves a change, THE SYSTEM SHALL make it live straight away, with no draft or approval step.                | Agreed   |
 
 ### R10. Admins manage sections and menus
 
@@ -165,22 +175,25 @@ can grow beyond semesters and the glossary without a developer.
 | R10.6 | IF an admin chooses an address that is already used, THEN THE SYSTEM SHALL refuse it and say which item uses it.                 | Proposed |
 | R10.7 | IF an admin disables a section, THEN THE SYSTEM SHALL also hide menu items that link to it.                                      | Proposed |
 
-### R11. Students have accounts
+### R11. Anyone can have an account
 
-**User story:** As a student, I want my own account, so that the portal can offer me features tied to me.
+**User story:** As a visitor, I want my own account, so that I can use member features as the portal adds
+them, such as paid content and offers.
 
-| ID     | Acceptance criterion                                                                                                                    | Status   |
-| ------ | --------------------------------------------------------------------------------------------------------------------------------------- | -------- |
-| R11.1  | WHEN a student signs up with their name, email and a password, THE SYSTEM SHALL create a student account.                               | Agreed   |
-| R11.2  | WHEN a student signs up, THE SYSTEM SHALL confirm the email address before the account can be used.                                     | Proposed |
-| R11.3  | WHEN a student signs in with a correct email and password, THE SYSTEM SHALL sign them in; WHEN they sign out, it SHALL end the session. | Agreed   |
-| R11.4  | WHEN a student asks to reset a forgotten password, THE SYSTEM SHALL email a reset link that works once and expires after 1 hour.        | Proposed |
-| R11.5  | IF sign-in fails 5 times within 15 minutes for one account, THEN THE SYSTEM SHALL block that account's sign-in for 15 minutes.          | Proposed |
-| R11.6  | THE SYSTEM SHALL let a student view and edit their own name and change their password.                                                  | Proposed |
-| R11.7  | WHEN a student deletes their account, THE SYSTEM SHALL remove their personal data.                                                      | Proposed |
-| R11.8  | THE SYSTEM SHALL collect only the personal data the portal needs, and SHALL tell students what it stores and why.                       | Proposed |
-| R11.9  | WHEN an admin disables a student account, THE SYSTEM SHALL stop that student from signing in.                                           | Proposed |
-| R11.10 | THE SYSTEM SHALL let anyone read the portal's content without signing in.                                                               | Open     |
+| ID     | Acceptance criterion                                                                                                                                                                | Status   |
+| ------ | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | -------- |
+| R11.1  | THE SYSTEM SHALL let anyone sign up, with no restriction by gender, age, religion or any other personal characteristic.                                                             | Agreed   |
+| R11.2  | THE SYSTEM SHALL let users sign up and sign in with any of: email and password; mobile number with a one-time code; single sign-on (SSO) with an outside account.                   | Agreed   |
+| R11.3  | WHEN a user signs up with an email address or mobile number, THE SYSTEM SHALL confirm it before the account can be used.                                                            | Proposed |
+| R11.4  | WHEN a user signs in correctly, THE SYSTEM SHALL sign them in; WHEN they sign out, it SHALL end the session.                                                                        | Agreed   |
+| R11.5  | WHEN a user with a password asks to reset it, THE SYSTEM SHALL send a reset link that works once and expires after 1 hour.                                                          | Proposed |
+| R11.6  | IF sign-in fails 5 times within 15 minutes for one account, THEN THE SYSTEM SHALL block that account's sign-in for 15 minutes.                                                      | Proposed |
+| R11.7  | THE SYSTEM SHALL let users view and edit their own name and contact details, and change their password.                                                                             | Proposed |
+| R11.8  | WHEN a user deletes their account, THE SYSTEM SHALL remove their personal data.                                                                                                     | Proposed |
+| R11.9  | THE SYSTEM SHALL collect only the personal data the portal needs, SHALL NOT ask for gender, age or religion, and SHALL tell users what it stores and why.                           | Proposed |
+| R11.10 | WHEN a user signs up, THE SYSTEM SHALL ask separately whether they agree to receive offers and marketing messages, unticked by default, and SHALL let them change this at any time. | Proposed |
+| R11.11 | WHEN an admin disables a user account, THE SYSTEM SHALL stop that user from signing in.                                                                                             | Proposed |
+| R11.12 | THE SYSTEM SHALL let anyone read public content and use search without signing in.                                                                                                  | Agreed   |
 
 ### R12. Users search subjects by code
 
@@ -191,11 +204,10 @@ have to browse through semesters to find it.
 | ----- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | -------- |
 | R12.1 | THE SYSTEM SHALL provide a search box on every page that finds subjects by their code.                                                                                          | Agreed   |
 | R12.2 | WHEN a user types a full or partial code (for example `1078` or `bl-10`), THE SYSTEM SHALL list matching subjects with code, title and semester, ignoring upper and lower case. | Proposed |
-| R12.3 | THE SYSTEM SHALL also match subject titles, in English and in Hindi.                                                                                                            | Proposed |
+| R12.3 | THE SYSTEM SHALL also match subject titles, in English and in Hindi.                                                                                                            | Agreed   |
 | R12.4 | WHEN a user enters a code that matches exactly one subject, THE SYSTEM SHALL open that subject's page.                                                                          | Proposed |
 | R12.5 | IF no subject matches, THEN THE SYSTEM SHALL say so and suggest browsing semesters.                                                                                             | Proposed |
 | R12.6 | THE SYSTEM SHALL NOT show disabled subjects in search results.                                                                                                                  | Proposed |
-| R12.7 | THE SYSTEM SHALL allow search without signing in.                                                                                                                               | Open     |
 
 ## Open questions
 
@@ -203,16 +215,11 @@ have to browse through semesters to find it.
 - [ ] Is 5 minutes (R1.1) an acceptable delay for content changes to appear?
 - [ ] A target page load time for students (e.g. first page under 2 seconds on 4G)?
 - [ ] Who translates content to Hindi, and in what order.
-- [ ] Admins: one person or several? Do they need different roles (for example editor vs. super admin)?
-- [ ] Sign-in method for admins: email and password, or a Google account?
-- [ ] Who creates admin accounts, and how is the first admin created?
-- [ ] Should changes go live as soon as an admin saves, or be saved as a draft and published later?
-- [ ] Do admins need version history (see and undo earlier versions)?
+- [ ] SSO (R11.2): which providers? For example Google, Microsoft, Apple, Facebook.
+- [ ] Mobile sign-in (R11.2) sends one-time codes by SMS, which costs money per message. Which SMS provider, and is that cost accepted?
+- [ ] Users under 18: India's Digital Personal Data Protection Act, 2023 requires verifiable parental consent to process a child's personal data. Block under-18 sign-ups, or add parental consent? Confirm with a legal advisor.
+- [ ] Are two admin roles (Super admin, Editor) enough (R8.5)?
 - [ ] Can admins permanently delete content, or only disable it? (Proposed: disable only.)
 - [ ] Besides Markdown pages, what else can a new section hold (for example lists, links, uploaded PDFs or images)?
 - [ ] Can admins add menus in more than one place (top menu, footer), or only the main menu?
-- [ ] What can students do only when signed in (for example bookmarks, reading progress, notes, quizzes)? Without this, accounts have no purpose yet.
-- [ ] Must students sign in to read content, or is reading open to everyone (R11.10)?
-- [ ] Can anyone sign up, or only Shakambhari University students (for example by university email or enrolment number)?
-- [ ] Sign-in method for students: email and password, Google account, or both?
-- [ ] Search (R12): codes only, or codes and titles? Should it later search glossary terms from the same box?
+- [ ] Should glossary terms later be searchable from the same search box (R12)?
