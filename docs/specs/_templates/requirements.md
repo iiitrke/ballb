@@ -16,6 +16,17 @@ As of YYYY-MM-DD · Owner: <name> · Next: [design.md](./design.md)
 
 -
 
+## Constraints
+
+<!--
+Technology or rules the owner has ALREADY fixed (e.g. "backend is Spring Boot", "hosted on our VPS").
+Keep them here, not inside acceptance criteria. Delete this section if there are none.
+-->
+
+| ID  | Constraint | Status |
+| --- | ---------- | ------ |
+| C1  |            | Agreed |
+
 ## Requirements
 
 <!--

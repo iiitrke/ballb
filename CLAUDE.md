@@ -23,7 +23,8 @@ In progress: split into Angular SSR frontend + Spring Boot microservices + Postg
 
 ### Workflow: requirements → design → tasks → code
 
-1. **Requirements** (`requirements.md`): user stories + EARS acceptance criteria with IDs (`R1.1`). No technology.
+1. **Requirements** (`requirements.md`): user stories + EARS acceptance criteria with IDs (`R1.1`), describing
+   behaviour only. Technology the user has already fixed goes in its Constraints section (`C1`…).
    Stop and wait for the user's approval.
 2. **Design** (`design.md`): how the requirements are met. Stop and wait for approval.
 3. **Tasks** (`tasks.md`): small checkbox tasks, each with "Do", "Done when" and "Covers: R…". Stop and wait for approval.
@@ -34,7 +35,8 @@ Never skip a step or write the next file before the user approves the current on
 `**Approval:**` line near the top: set it to `Waiting for review` when written, and to
 `Approved YYYY-MM-DD` only when the user approves. Never implement a task unless requirements, design
 and tasks all say Approved. Start new specs from
-`docs/specs/_templates/` (or with the `/spec` skill).
+`docs/specs/_templates/` (or with the `/spec` skill). Work written before its step (e.g.
+`docs/specs/backend-split/notes/`) is input for that step only: never treat it as approved or implement from it.
 
 ### Key rules
 

@@ -1,8 +1,10 @@
-# Backend split — Design
+# Backend split — Design draft (not approved)
 
-As of 2026-11-04 · Requirements: [requirements.md](./requirements.md) · Tasks: [tasks.md](./tasks.md) · Living version: [Claude Doc](https://claude.ai/artifact/GKFbjVkw56ZC69nMATfcKG) — keep this file in sync when the spec changes.
+> **Not an approved spec file.** This draft was written before the requirements, so it is out of order.
+> It is kept only as input for step 2 (design), which starts after [requirements.md](../requirements.md) is approved.
+> Do not implement anything from it.
 
-**Approval:** Draft. Written before the requirements (out of order); it will be re-checked against [requirements.md](./requirements.md) once those are approved, then reviewed.
+As of 2026-11-04 · Requirements: [requirements.md](../requirements.md) · Tasks: [tasks.md](./tasks-draft.md) · Living version: [Claude Doc](https://claude.ai/artifact/GKFbjVkw56ZC69nMATfcKG) — keep this file in sync when the spec changes.
 
 **How to read this spec:** _Agreed_ means decided in discussion on 2026-11-04; _Proposed_ means Claude's suggestion, awaiting approval.
 
@@ -218,7 +220,7 @@ ballb/
 
 ## Implementation phases
 
-The phases and their tasks live in [tasks.md](./tasks.md).
+The phases and their tasks live in [tasks.md](./tasks-draft.md).
 
 ## Open questions and future work
 

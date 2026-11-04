@@ -1,8 +1,10 @@
-# Backend split — Tasks
+# Backend split — Tasks draft (not approved)
 
-As of 2026-11-04 · Requirements: [requirements.md](./requirements.md) · Design: [design.md](./design.md)
+> **Not an approved spec file.** This draft was written before the requirements, so it is out of order.
+> It is kept only as input for step 3 (tasks), which starts after [requirements.md](../requirements.md) is approved.
+> Do not implement anything from it.
 
-**Approval:** Draft. No task starts until requirements and design are both approved.
+As of 2026-11-04 · Requirements: [requirements.md](../requirements.md) · Design: [design.md](./design-draft.md)
 
 **How to use this file:** do one task at a time, in order. A task is finished only when its
 "Done when" check passes. Then tick its box (`- [x]`) in the same change as the code.
