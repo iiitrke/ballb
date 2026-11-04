@@ -30,7 +30,10 @@ In progress: split into Angular SSR frontend + Spring Boot microservices + Postg
 4. **Code**: implement one task at a time, only from an approved `tasks.md`. Run its "Done when" check, tick
    its box in the same change, then stop and report.
 
-Never skip a step or write the next file before the user approves the current one. Start new specs from
+Never skip a step or write the next file before the user approves the current one. Each file has an
+`**Approval:**` line near the top: set it to `Waiting for review` when written, and to
+`Approved YYYY-MM-DD` only when the user approves. Never implement a task unless requirements, design
+and tasks all say Approved. Start new specs from
 `docs/specs/_templates/` (or with the `/spec` skill).
 
 ### Key rules

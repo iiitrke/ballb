@@ -2,6 +2,8 @@
 
 As of 2026-11-04 · Requirements: [requirements.md](./requirements.md) · Design: [design.md](./design.md)
 
+**Approval:** Draft. No task starts until requirements and design are both approved.
+
 **How to use this file:** do one task at a time, in order. A task is finished only when its
 "Done when" check passes. Then tick its box (`- [x]`) in the same change as the code.
 

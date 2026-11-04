@@ -2,6 +2,8 @@
 
 As of YYYY-MM-DD · Requirements: [requirements.md](./requirements.md) · Design: [design.md](./design.md)
 
+**Approval:** Waiting for review. Write only after design is approved.
+
 **How to use this file:** do one task at a time, in order. A task is finished only when its
 "Done when" check passes. Then tick its box (`- [x]`) in the same change as the code.
 

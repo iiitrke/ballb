@@ -2,6 +2,8 @@
 
 As of YYYY-MM-DD · Owner: <name> · Next: [design.md](./design.md)
 
+**Approval:** Waiting for review.
+
 **Labels:** _Agreed_ = decided · _Proposed_ = suggestion, not confirmed · _Open_ = not decided, ask first.
 
 ## Goal

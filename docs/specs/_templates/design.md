@@ -2,6 +2,8 @@
 
 As of YYYY-MM-DD · Requirements: [requirements.md](./requirements.md) · Tasks: [tasks.md](./tasks.md)
 
+**Approval:** Waiting for review. Write only after requirements are approved.
+
 **Labels:** _Agreed_ = decided · _Proposed_ = suggestion, not confirmed · _Open_ = not decided, ask first.
 
 ## Overview

@@ -2,6 +2,8 @@
 
 As of 2026-11-04 · Requirements: [requirements.md](./requirements.md) · Tasks: [tasks.md](./tasks.md) · Living version: [Claude Doc](https://claude.ai/artifact/GKFbjVkw56ZC69nMATfcKG) — keep this file in sync when the spec changes.
 
+**Approval:** Draft. Written before the requirements (out of order); it will be re-checked against [requirements.md](./requirements.md) once those are approved, then reviewed.
+
 **How to read this spec:** _Agreed_ means decided in discussion on 2026-11-04; _Proposed_ means Claude's suggestion, awaiting approval.
 
 ## Overview

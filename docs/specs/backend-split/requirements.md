@@ -2,6 +2,8 @@
 
 As of 2026-11-04 · Next: [design.md](./design.md) · Then: [tasks.md](./tasks.md)
 
+**Approval:** Waiting for review. This is step 1; design and tasks wait for it.
+
 **Labels:** _Agreed_ = decided in discussion on 2026-11-04 · _Proposed_ = Claude's suggestion, not
 confirmed · _Open_ = not decided, ask first.
 
