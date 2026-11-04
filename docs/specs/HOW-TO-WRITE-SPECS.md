@@ -179,8 +179,8 @@ Why each line matters:
 
 ## Files in this folder
 
-| File                                   | What it is                                              |
-| -------------------------------------- | ------------------------------------------------------- |
-| [`README.md`](./README.md)             | This guide                                              |
-| [`_template.md`](./_template.md)       | Copy this to start a new spec                           |
-| [`architecture.md`](./architecture.md) | The frontend/backend architecture spec (a full example) |
+| File                                               | What it is                                              |
+| -------------------------------------------------- | ------------------------------------------------------- |
+| [`HOW-TO-WRITE-SPECS.md`](./HOW-TO-WRITE-SPECS.md) | This guide                                              |
+| [`_template.md`](./_template.md)                   | Copy this to start a new spec                           |
+| [`architecture.md`](./architecture.md)             | The frontend/backend architecture spec (a full example) |
