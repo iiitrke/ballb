@@ -58,7 +58,7 @@ to a reason.
 
 - New feature: type `/spec <feature name>`. Claude writes `requirements.md` and stops for your review.
 - Say "approved" (or give changes). Claude then writes `design.md`, stops, then `tasks.md`, stops.
-- Build: "Do task 1.1 from `docs/specs/backend-split/tasks.md`." Claude does that one task, runs its
+- Build: "Do task 1.1 from `docs/specs/project/tasks.md`." Claude does that one task, runs its
   "Done when" check, ticks the box, and stops.
 
 **Rules for the gates:**
@@ -70,8 +70,9 @@ to a reason.
 - Ideas written too early go in the feature's `notes/` folder. They are input for a later step, never
   an approved spec.
 
-[`backend-split/`](./backend-split/) is the live example: requirements are written and waiting for
-approval; early design and task drafts wait in `backend-split/notes/`.
+[`project/`](./project/) holds the whole project's spec and is the live example: requirements are written
+and waiting for approval; early design and task drafts wait in `project/notes/`. Later features get their
+own folder next to it.
 
 ---
 
@@ -138,7 +139,7 @@ AI likes to be helpful and may "improve" things you did not ask about. Stop that
 
 One example beats a paragraph of description. Show a sample JSON response, a sample Markdown file,
 a sample URL, a sample command. See the subject response example in
-[`backend-split/notes/design-draft.md`](./backend-split/notes/design-draft.md#api-contract).
+[`project/notes/design-draft.md`](./project/notes/design-draft.md#api-contract).
 
 ### 8. Use tables and lists for facts, sentences for reasons
 
@@ -184,7 +185,7 @@ Claude copies patterns well. Tell it where the good examples are.
 A good request names the spec, the part to do, the limits, and the finish line:
 
 ```text
-Read docs/specs/backend-split/ (requirements.md, design.md and tasks.md, all Approved).
+Read docs/specs/project/ (requirements.md, design.md and tasks.md, all Approved).
 Do task 1.1 from tasks.md only.
 Do not change anything under apps/ or libs/.
 Run its "Done when" check, tick the box, then stop.
@@ -232,10 +233,10 @@ Why each line matters:
 
 ## Files in this folder
 
-| File                                                         | What it is                                                          |
-| ------------------------------------------------------------ | ------------------------------------------------------------------- |
-| [`HOW-TO-WRITE-SPECS.md`](./HOW-TO-WRITE-SPECS.md)           | This guide                                                          |
-| [`_templates/requirements.md`](./_templates/requirements.md) | Template for step 1                                                 |
-| [`_templates/design.md`](./_templates/design.md)             | Template for step 2                                                 |
-| [`_templates/tasks.md`](./_templates/tasks.md)               | Template for step 3                                                 |
-| [`backend-split/`](./backend-split/)                         | The frontend/backend split: the live example (step 1, requirements) |
+| File                                                         | What it is                                                        |
+| ------------------------------------------------------------ | ----------------------------------------------------------------- |
+| [`HOW-TO-WRITE-SPECS.md`](./HOW-TO-WRITE-SPECS.md)           | This guide                                                        |
+| [`_templates/requirements.md`](./_templates/requirements.md) | Template for step 1                                               |
+| [`_templates/design.md`](./_templates/design.md)             | Template for step 2                                               |
+| [`_templates/tasks.md`](./_templates/tasks.md)               | Template for step 3                                               |
+| [`project/`](./project/)                                     | The whole project's spec: the live example (step 1, requirements) |

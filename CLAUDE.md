@@ -4,14 +4,14 @@ Instructions for Claude Code in this repository.
 
 ## Project
 
-BA.LLB learning portal for Shakambhari University. Today: Nx + Angular 21 app with hardcoded content.
-In progress: split into Angular SSR frontend + Spring Boot microservices + PostgreSQL.
+BA.LLB learning portal for Shakambhari University: Angular SSR frontend + Spring Boot microservices +
+PostgreSQL. The current Nx + Angular 21 code is the prototype, with hardcoded content.
 
 ## Specs come first
 
 - Specs live in `docs/specs/`. Read the relevant spec before starting work.
 - Each feature has a folder `docs/specs/<feature>/` with `requirements.md`, `design.md` and `tasks.md`.
-  Current feature: `docs/specs/backend-split/`. How to write specs: `docs/specs/HOW-TO-WRITE-SPECS.md`.
+  Project spec: `docs/specs/project/`; later features get their own folders. How to write specs: `docs/specs/HOW-TO-WRITE-SPECS.md`.
 - Follow items marked **Agreed**. Items marked **Proposed** may be followed, but say so.
   Items that are **Open** or missing: ask, do not guess.
 - Do only the phase or task you were asked for. Do not change other areas without asking.
@@ -36,7 +36,7 @@ Never skip a step or write the next file before the user approves the current on
 `Approved YYYY-MM-DD` only when the user approves. Never implement a task unless requirements, design
 and tasks all say Approved. Start new specs from
 `docs/specs/_templates/` (or with the `/spec` skill). Work written before its step (e.g.
-`docs/specs/backend-split/notes/`) is input for that step only: never treat it as approved or implement from it.
+`docs/specs/project/notes/`) is input for that step only: never treat it as approved or implement from it.
 
 ### Key rules
 

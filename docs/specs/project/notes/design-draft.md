@@ -1,4 +1,4 @@
-# Backend split — Design draft (not approved)
+# BA.LLB Learning Portal — Design draft (not approved)
 
 > **Not an approved spec file.** This draft was written before the requirements, so it is out of order.
 > It is kept only as input for step 2 (design), which starts after [requirements.md](../requirements.md) is approved.

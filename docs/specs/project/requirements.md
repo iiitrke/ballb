@@ -1,6 +1,8 @@
-# Backend split — Requirements
+# BA.LLB Learning Portal — Project Requirements
 
 As of 2026-11-04 · Step 1 of 3 · Next: `design.md` (written after this file is approved)
+
+These are the requirements for the whole project. Later features get their own folder in `docs/specs/`.
 
 **Approval:** Waiting for review.
 
@@ -9,16 +11,18 @@ confirmed · _Open_ = not decided, ask first.
 
 ## Goal
 
-Move all portal content out of the website's code into a central content store, so content can change
-without rebuilding the website, while students keep the same pages, URLs and English/हिंदी toggle they
-have today.
+Build a learning portal for BA.LLB students of Shakambhari University where they can browse semesters,
+read subject outlines and search a legal glossary, in English or हिंदी. All content lives in a central
+content store, so it can change without rebuilding the website.
+
+The existing Angular prototype in this repository supplies the starting content and page design.
 
 ## Out of scope
 
 - An admin screen or any way to edit content from the website. Content is loaded by scripts for now.
 - Student accounts, login or personal data.
 - Writing new content or new Hindi translations.
-- Search across subject content (only the glossary is searchable, as today).
+- Search across subject content (only the glossary is searchable).
 
 ## Constraints
 
@@ -26,7 +30,7 @@ Technology the project owner has already fixed. The design must use these; it do
 
 | ID  | Constraint                                                                                                                 | Status |
 | --- | -------------------------------------------------------------------------------------------------------------------------- | ------ |
-| C1  | The frontend is the existing Angular app, rendered on the server with Angular SSR.                                         | Agreed |
+| C1  | The frontend is built with Angular and rendered on the server with Angular SSR.                                            | Agreed |
 | C2  | The backend is Spring Boot microservices behind one API gateway.                                                           | Agreed |
 | C3  | Each service owns its own database; no other service reads or writes it.                                                   | Agreed |
 | C4  | Content is stored in a database, written as Markdown.                                                                      | Agreed |
@@ -45,7 +49,7 @@ change without anyone rebuilding or redeploying the website.
 | ---- | --------------------------------------------------------------------------------------------------------------------------------- | -------- |
 | R1.1 | WHEN content in the content store changes, THE SYSTEM SHALL show the new content within 5 minutes, without a rebuild or redeploy. | Proposed |
 | R1.2 | THE SYSTEM SHALL hold each piece of text in English, and optionally in Hindi.                                                     | Proposed |
-| R1.3 | WHEN migration is finished, THE SYSTEM SHALL contain all content that the current site shows, with nothing lost.                  | Proposed |
+| R1.3 | WHEN the portal launches, THE SYSTEM SHALL contain all content from the existing prototype, with nothing lost.                    | Proposed |
 
 ### R2. Students browse semesters and read subjects
 
@@ -58,7 +62,7 @@ know what to study.
 | R2.2 | WHEN a student opens `/semesters/{number}`, THE SYSTEM SHALL list that semester's subjects, each badged as official or sample. | Proposed |
 | R2.3 | WHEN a student opens `/semesters/{number}/{code}`, THE SYSTEM SHALL show that subject's details and its formatted content.     | Proposed |
 | R2.4 | IF the semester or subject code does not exist, THEN THE SYSTEM SHALL show a Not found page and respond with HTTP status 404.  | Proposed |
-| R2.5 | THE SYSTEM SHALL keep every URL the current site uses working, unchanged.                                                      | Proposed |
+| R2.5 | THE SYSTEM SHALL serve pages at `/`, `/semesters`, `/semesters/{number}`, `/semesters/{number}/{code}` and `/glossary`.        | Proposed |
 
 ### R3. Students search the glossary
 
