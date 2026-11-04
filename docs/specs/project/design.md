@@ -2,7 +2,8 @@
 
 As of 2026-11-04 · Step 2 of 3 · Requirements: [requirements.md](./requirements.md) · Next: [tasks.md](./tasks.md)
 
-**Approval:** Approved 2026-11-04. All Proposed choices were accepted and are now Agreed.
+**Approval:** Approved 2026-11-04. All Proposed choices were accepted and are now Agreed. Changed
+2026-11-04: the staging row in Environments, waiting for review.
 
 **Labels:** _Agreed_ = decided by the owner · _Proposed_ = Claude's design choice, awaiting approval ·
 _Open_ = not decided. Every row ends with the requirement (`R…`) or constraint (`C…`) IDs it serves.
@@ -211,12 +212,12 @@ sequenceDiagram
 
 ## Environments and deployment
 
-| Environment | Where  | How it runs                                                                                                                                     | Entry                      | Serves   |
-| ----------- | ------ | ----------------------------------------------------------------------------------------------------------------------------------------------- | -------------------------- | -------- |
-| dev         | Laptop | `frontend` with `nx serve`; services with `./mvnw spring-boot:run`; Postgres and Mailpit (fake email inbox) via `docker/docker-compose.dev.yml` | `http://localhost:4200`    | R7.1     |
-| test        | Laptop | `docker compose -f docker/docker-compose.test.yml up` builds and runs everything                                                                | `http://localhost:8080`    | R7.2     |
-| staging     | VPS    | Compose project `ballb-staging`, images from GitHub Container Registry (GHCR)                                                                   | `https://staging.<domain>` | R7.3, C5 |
-| prod        | VPS    | Compose project `ballb-prod`                                                                                                                    | `https://<domain>`         | R7.4, C5 |
+| Environment | Where                                                                                                                       | How it runs                                                                                                                                     | Entry                      | Serves   |
+| ----------- | --------------------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------- | -------------------------- | -------- |
+| dev         | Laptop                                                                                                                      | `frontend` with `nx serve`; services with `./mvnw spring-boot:run`; Postgres and Mailpit (fake email inbox) via `docker/docker-compose.dev.yml` | `http://localhost:4200`    | R7.1     |
+| test        | Laptop                                                                                                                      | `docker compose -f docker/docker-compose.test.yml up` builds and runs everything                                                                | `http://localhost:8080`    | R7.2     |
+| staging     | Staging server (Linux in Docker, see [staging server spec](../staging-server/requirements.md)); changed, waiting for review | Compose project `ballb-staging` on the staging server's inner Docker, images from GitHub Container Registry (GHCR), behind its nginx-proxy      | `https://staging.<domain>` | R7.3, C5 |
+| prod        | VPS                                                                                                                         | Compose project `ballb-prod`                                                                                                                    | `https://<domain>`         | R7.4, C5 |
 
 GitHub Actions (C7, C10): `ci.yml` on pull requests builds and tests only the folders that changed;
 `deploy-staging.yml` on merge to `main` builds changed images, tags them with the commit SHA and
