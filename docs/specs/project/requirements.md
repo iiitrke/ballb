@@ -12,14 +12,14 @@ confirmed · _Open_ = not decided, ask first.
 ## Goal
 
 Build a learning portal for BA.LLB students of Shakambhari University where they can browse semesters,
-read subject outlines and search a legal glossary, in English or हिंदी. Admins manage all content, sections
-and menus from an admin dashboard, and changes reach students without rebuilding the website.
+read subject outlines and search a legal glossary, in English or हिंदी. Students can create their own accounts.
+Admins manage all content, sections and menus from an admin dashboard, and changes reach students
+without rebuilding the website.
 
 The existing Angular prototype in this repository supplies the starting content and page design.
 
 ## Out of scope
 
-- Student accounts, login or personal data. Only admins sign in.
 - Writing new content or new Hindi translations.
 - Search across subject content (only the glossary is searchable).
 
@@ -129,7 +129,7 @@ managed safely in one place.
 | ---- | ------------------------------------------------------------------------------------------------------------------------------ | -------- |
 | R8.1 | THE SYSTEM SHALL provide an admin dashboard at `/admin`.                                                                       | Proposed |
 | R8.2 | WHEN someone who is not signed in opens the dashboard, THE SYSTEM SHALL ask them to sign in.                                   | Agreed   |
-| R8.3 | THE SYSTEM SHALL allow only admin accounts to sign in and to change content.                                                   | Agreed   |
+| R8.3 | THE SYSTEM SHALL allow only admin accounts to open the dashboard and change content; student accounts cannot.                  | Agreed   |
 | R8.4 | IF sign-in fails 5 times within 15 minutes for one account, THEN THE SYSTEM SHALL block that account's sign-in for 15 minutes. | Proposed |
 | R8.5 | WHEN an admin is inactive for 30 minutes, THE SYSTEM SHALL sign them out.                                                      | Proposed |
 
@@ -165,6 +165,23 @@ can grow beyond semesters and the glossary without a developer.
 | R10.6 | IF an admin chooses an address that is already used, THEN THE SYSTEM SHALL refuse it and say which item uses it.                 | Proposed |
 | R10.7 | IF an admin disables a section, THEN THE SYSTEM SHALL also hide menu items that link to it.                                      | Proposed |
 
+### R11. Students have accounts
+
+**User story:** As a student, I want my own account, so that the portal can offer me features tied to me.
+
+| ID     | Acceptance criterion                                                                                                                    | Status   |
+| ------ | --------------------------------------------------------------------------------------------------------------------------------------- | -------- |
+| R11.1  | WHEN a student signs up with their name, email and a password, THE SYSTEM SHALL create a student account.                               | Agreed   |
+| R11.2  | WHEN a student signs up, THE SYSTEM SHALL confirm the email address before the account can be used.                                     | Proposed |
+| R11.3  | WHEN a student signs in with a correct email and password, THE SYSTEM SHALL sign them in; WHEN they sign out, it SHALL end the session. | Agreed   |
+| R11.4  | WHEN a student asks to reset a forgotten password, THE SYSTEM SHALL email a reset link that works once and expires after 1 hour.        | Proposed |
+| R11.5  | IF sign-in fails 5 times within 15 minutes for one account, THEN THE SYSTEM SHALL block that account's sign-in for 15 minutes.          | Proposed |
+| R11.6  | THE SYSTEM SHALL let a student view and edit their own name and change their password.                                                  | Proposed |
+| R11.7  | WHEN a student deletes their account, THE SYSTEM SHALL remove their personal data.                                                      | Proposed |
+| R11.8  | THE SYSTEM SHALL collect only the personal data the portal needs, and SHALL tell students what it stores and why.                       | Proposed |
+| R11.9  | WHEN an admin disables a student account, THE SYSTEM SHALL stop that student from signing in.                                           | Proposed |
+| R11.10 | THE SYSTEM SHALL let anyone read the portal's content without signing in.                                                               | Open     |
+
 ## Open questions
 
 - [ ] Production domain name, and whether staging uses `staging.<domain>`.
@@ -179,3 +196,7 @@ can grow beyond semesters and the glossary without a developer.
 - [ ] Can admins permanently delete content, or only disable it? (Proposed: disable only.)
 - [ ] Besides Markdown pages, what else can a new section hold (for example lists, links, uploaded PDFs or images)?
 - [ ] Can admins add menus in more than one place (top menu, footer), or only the main menu?
+- [ ] What can students do only when signed in (for example bookmarks, reading progress, notes, quizzes)? Without this, accounts have no purpose yet.
+- [ ] Must students sign in to read content, or is reading open to everyone (R11.10)?
+- [ ] Can anyone sign up, or only Shakambhari University students (for example by university email or enrolment number)?
+- [ ] Sign-in method for students: email and password, Google account, or both?
