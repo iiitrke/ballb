@@ -31,17 +31,17 @@ The existing Angular prototype in this repository supplies the starting content 
 
 Technology the project owner has already fixed. The design must use these; it does not re-decide them.
 
-| ID  | Constraint                                                                                                                                                              | Status |
-| --- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------ |
-| C1  | The frontend is built with Angular and rendered on the server with Angular SSR.                                                                                         | Agreed |
-| C2  | The backend is Spring Boot microservices behind one API gateway.                                                                                                        | Agreed |
-| C3  | Each service owns its own database; no other service reads or writes it.                                                                                                | Agreed |
-| C4  | Content is stored in a database, written as Markdown.                                                                                                                   | Agreed |
-| C5  | Staging and production run in Docker on a VPS, behind the existing nginx and Let's Encrypt containers.                                                                  | Agreed |
-| C6  | On the VPS, nginx connects only to the gateway, and the gateway connects to the services over the internal Docker network.                                              | Agreed |
-| C7  | Deployments run through GitHub Actions.                                                                                                                                 | Agreed |
-| C8  | The repository root holds one folder per service, frontend and backend alike. Each folder is self-contained: its own code, build files, dependencies and Dockerfile.    | Agreed |
-| C9  | The current Angular project moves from the repository root into its own frontend folder. Shared material (`docs/`, Docker Compose files, `.github/`) stays at the root. | Agreed |
+| ID  | Constraint                                                                                                                                                           | Status |
+| --- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------ |
+| C1  | The frontend is built with Angular and rendered on the server with Angular SSR.                                                                                      | Agreed |
+| C2  | The backend is Spring Boot microservices behind one API gateway.                                                                                                     | Agreed |
+| C3  | Each service owns its own database; no other service reads or writes it.                                                                                             | Agreed |
+| C4  | Content is stored in a database, written as Markdown.                                                                                                                | Agreed |
+| C5  | Staging and production run in Docker on a VPS, behind the existing nginx and Let's Encrypt containers.                                                               | Agreed |
+| C6  | On the VPS, nginx connects only to the gateway, and the gateway connects to the services over the internal Docker network.                                           | Agreed |
+| C7  | Deployments run through GitHub Actions.                                                                                                                              | Agreed |
+| C8  | The repository root holds one folder per service, frontend and backend alike. Each folder is self-contained: its own code, build files, dependencies and Dockerfile. | Agreed |
+| C9  | The current Angular project moves from the repository root into its own frontend folder.                                                                             | Agreed |
 
 ## Requirements
 
@@ -226,3 +226,4 @@ have to browse through semesters to find it.
 - [ ] Can admins add menus in more than one place (top menu, footer), or only the main menu?
 - [ ] Should glossary terms later be searchable from the same search box (R12)?
 - [ ] Folder names (C8): proposed `frontend/`, `gateway/` and one `<name>-service/` per backend service. Keep these or choose others?
+- [ ] Shared material: proposed to keep `docs/`, the Docker Compose files and `.github/` at the repository root, outside the service folders. OK?
