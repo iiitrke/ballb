@@ -24,7 +24,7 @@ on its own branch before the next phase starts.
   - Done when: the workflow's commands, run locally from the same folder, produce the artifact; after a
     push to `deploy`, the Pages site still loads.
   - Covers: C10
-- [ ] **0.3 Update commands in `README.md` and `CLAUDE.md`**
+- [x] **0.3 Update commands in `README.md` and `CLAUDE.md`**
   - Do: every command names the folder it runs in (for example `cd frontend && npx nx serve ballb-portal`).
   - Done when: each listed command runs from where it says.
   - Covers: C8
