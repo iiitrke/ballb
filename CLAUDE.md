@@ -35,8 +35,7 @@ Never skip a step or write the next file before the user approves the current on
 `**Approval:**` line near the top: set it to `Waiting for review` when written, and to
 `Approved YYYY-MM-DD` only when the user approves. Never implement a task unless requirements, design
 and tasks all say Approved. Start new specs from
-`docs/specs/_templates/` (or with the `/spec` skill). Work written before its step (e.g.
-`docs/specs/project/notes/`) is input for that step only: never treat it as approved or implement from it.
+`docs/specs/_templates/` (or with the `/spec` skill). Work written before its step (in a `notes/` folder) is input for that step only: never treat it as approved or implement from it.
 
 ### Key rules
 

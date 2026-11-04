@@ -70,8 +70,8 @@ to a reason.
 - Ideas written too early go in the feature's `notes/` folder. They are input for a later step, never
   an approved spec.
 
-[`project/`](./project/) holds the whole project's spec and is the live example: requirements are
-approved, the design is waiting for review, and an early task draft waits in `project/notes/`. Later features get their
+[`project/`](./project/) holds the whole project's spec and is the live example: requirements and design are approved,
+and the tasks are waiting for review. Later features get their
 own folder next to it.
 
 ---
@@ -233,10 +233,10 @@ Why each line matters:
 
 ## Files in this folder
 
-| File                                                         | What it is                                                  |
-| ------------------------------------------------------------ | ----------------------------------------------------------- |
-| [`HOW-TO-WRITE-SPECS.md`](./HOW-TO-WRITE-SPECS.md)           | This guide                                                  |
-| [`_templates/requirements.md`](./_templates/requirements.md) | Template for step 1                                         |
-| [`_templates/design.md`](./_templates/design.md)             | Template for step 2                                         |
-| [`_templates/tasks.md`](./_templates/tasks.md)               | Template for step 3                                         |
-| [`project/`](./project/)                                     | The whole project's spec: the live example (step 2, design) |
+| File                                                         | What it is                                                 |
+| ------------------------------------------------------------ | ---------------------------------------------------------- |
+| [`HOW-TO-WRITE-SPECS.md`](./HOW-TO-WRITE-SPECS.md)           | This guide                                                 |
+| [`_templates/requirements.md`](./_templates/requirements.md) | Template for step 1                                        |
+| [`_templates/design.md`](./_templates/design.md)             | Template for step 2                                        |
+| [`_templates/tasks.md`](./_templates/tasks.md)               | Template for step 3                                        |
+| [`project/`](./project/)                                     | The whole project's spec: the live example (step 3, tasks) |

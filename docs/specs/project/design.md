@@ -1,9 +1,8 @@
 # BA.LLB Learning Portal — Design
 
-As of 2026-11-04 · Step 2 of 3 · Requirements: [requirements.md](./requirements.md) · Next: `tasks.md`
-(written after this file is approved)
+As of 2026-11-04 · Step 2 of 3 · Requirements: [requirements.md](./requirements.md) · Next: [tasks.md](./tasks.md)
 
-**Approval:** Waiting for review.
+**Approval:** Approved 2026-11-04. All Proposed choices were accepted and are now Agreed.
 
 **Labels:** _Agreed_ = decided by the owner · _Proposed_ = Claude's design choice, awaiting approval ·
 _Open_ = not decided. Every row ends with the requirement (`R…`) or constraint (`C…`) IDs it serves.
@@ -58,22 +57,22 @@ on the public domain, through the same path.
 
 ## Decisions
 
-| Decision         | Choice                                                                                                                                  | Why                                                                                             | Status   | Serves                  |
-| ---------------- | --------------------------------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------- | -------- | ----------------------- |
-| Services         | gateway, identity, curriculum, glossary, site, notification                                                                             | One service per area of data: accounts, curriculum, glossary, site structure, outbound messages | Proposed | C2, C3                  |
-| Admin dashboard  | Lazy-loaded `/admin` area inside the `frontend` app, rendered in the browser only                                                       | One app to build and deploy; private pages gain nothing from SSR or search engines              | Proposed | R8.1, C1                |
-| Markdown to HTML | Each content service renders with flexmark-java, then cleans with OWASP Java HTML Sanitizer                                             | One cleaned output for every client; the browser bundle carries no Markdown parser              | Proposed | R6.3, C4                |
-| Admin preview    | `POST /api/<service>/admin/preview` renders with the same code as live pages                                                            | The preview is exactly what students will see                                                   | Proposed | R9.5                    |
-| Sign-in tokens   | identity-service issues a 15-minute signed access token (JWT) and a refresh token, both in `HttpOnly`, `Secure`, `SameSite=Lax` cookies | Works for SSR (the server forwards the cookie) and keeps tokens away from page scripts          | Proposed | R8.2, R11.4             |
-| Token checks     | Gateway verifies the JWT against identity-service's public key and passes user ID and role to services in headers                       | One place checks tokens; services stay simple                                                   | Proposed | R8.3, R6.1              |
-| SSO              | OpenID Connect through Spring Security OAuth2 Client in identity-service; providers set in config                                       | Adding a provider is configuration, not code                                                    | Proposed | R11.2                   |
-| Mobile sign-in   | 6-digit one-time code by SMS, valid 5 minutes, 3 tries                                                                                  | Common, familiar pattern                                                                        | Proposed | R11.2                   |
-| Disabled items   | An `enabled` flag on every content row; public endpoints return only enabled rows                                                       | Hide without deleting; admin views still list everything                                        | Proposed | R9.3, R9.4, R9.9, R10.5 |
-| Freshness        | Services clear their HTML cache on every admin save; public `GET`s send `Cache-Control: max-age=60`                                     | Changes are visible within about a minute, inside the 5-minute limit                            | Proposed | R1.1, R9.2, R9.10       |
-| Service calls    | Plain REST over the internal network; `/internal/**` paths are never routed by the gateway                                              | Simple for one host; internal calls can't be reached from outside                               | Proposed | R6.2                    |
-| Discovery        | Docker Compose DNS names (`curriculum-service:8082`); no Eureka or Consul                                                               | A fixed set of services on one host                                                             | Proposed | C2                      |
-| Builds           | Each folder is its own project: Maven wrapper per service, npm/Nx in `frontend/`                                                        | Matches self-contained folders; each service builds and ships alone                             | Proposed | C8                      |
-| Stack            | Spring Boot 4.0.9, Spring Cloud 2025.1.4, Java 17, PostgreSQL 17, Angular 21                                                            | Current stable releases; Java 17 matches the local JDK                                          | Proposed | C1, C2                  |
+| Decision         | Choice                                                                                                                                  | Why                                                                                             | Status | Serves                  |
+| ---------------- | --------------------------------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------- | ------ | ----------------------- |
+| Services         | gateway, identity, curriculum, glossary, site, notification                                                                             | One service per area of data: accounts, curriculum, glossary, site structure, outbound messages | Agreed | C2, C3                  |
+| Admin dashboard  | Lazy-loaded `/admin` area inside the `frontend` app, rendered in the browser only                                                       | One app to build and deploy; private pages gain nothing from SSR or search engines              | Agreed | R8.1, C1                |
+| Markdown to HTML | Each content service renders with flexmark-java, then cleans with OWASP Java HTML Sanitizer                                             | One cleaned output for every client; the browser bundle carries no Markdown parser              | Agreed | R6.3, C4                |
+| Admin preview    | `POST /api/<service>/admin/preview` renders with the same code as live pages                                                            | The preview is exactly what students will see                                                   | Agreed | R9.5                    |
+| Sign-in tokens   | identity-service issues a 15-minute signed access token (JWT) and a refresh token, both in `HttpOnly`, `Secure`, `SameSite=Lax` cookies | Works for SSR (the server forwards the cookie) and keeps tokens away from page scripts          | Agreed | R8.2, R11.4             |
+| Token checks     | Gateway verifies the JWT against identity-service's public key and passes user ID and role to services in headers                       | One place checks tokens; services stay simple                                                   | Agreed | R8.3, R6.1              |
+| SSO              | OpenID Connect through Spring Security OAuth2 Client in identity-service; providers set in config                                       | Adding a provider is configuration, not code                                                    | Agreed | R11.2                   |
+| Mobile sign-in   | 6-digit one-time code by SMS, valid 5 minutes, 3 tries                                                                                  | Common, familiar pattern                                                                        | Agreed | R11.2                   |
+| Disabled items   | An `enabled` flag on every content row; public endpoints return only enabled rows                                                       | Hide without deleting; admin views still list everything                                        | Agreed | R9.3, R9.4, R9.9, R10.5 |
+| Freshness        | Services clear their HTML cache on every admin save; public `GET`s send `Cache-Control: max-age=60`                                     | Changes are visible within about a minute, inside the 5-minute limit                            | Agreed | R1.1, R9.2, R9.10       |
+| Service calls    | Plain REST over the internal network; `/internal/**` paths are never routed by the gateway                                              | Simple for one host; internal calls can't be reached from outside                               | Agreed | R6.2                    |
+| Discovery        | Docker Compose DNS names (`curriculum-service:8082`); no Eureka or Consul                                                               | A fixed set of services on one host                                                             | Agreed | C2                      |
+| Builds           | Each folder is its own project: Maven wrapper per service, npm/Nx in `frontend/`                                                        | Matches self-contained folders; each service builds and ships alone                             | Agreed | C8                      |
+| Stack            | Spring Boot 4.0.9, Spring Cloud 2025.1.4, Java 17, PostgreSQL 17, Angular 21                                                            | Current stable releases; Java 17 matches the local JDK                                          | Agreed | C1, C2                  |
 
 ## Components
 
