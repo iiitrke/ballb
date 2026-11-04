@@ -3,7 +3,7 @@
 As of 2026-11-04 · Step 3 of 3 · Requirements: [requirements.md](./requirements.md) · Design:
 [design.md](./design.md)
 
-**Approval:** Waiting for review.
+**Approval:** Approved 2026-11-04.
 
 **How to use this file:** do one task at a time, in order. A task is finished only when its "Done when"
 check passes. Then tick its box (`- [x]`) in the same change as the code. Each phase is merged to `main`
