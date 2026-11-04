@@ -43,6 +43,8 @@ Technology the project owner has already fixed. The design must use these; it do
 | C8  | The repository root holds one folder per service, frontend and backend alike. Each folder is self-contained: its own code, build files, dependencies and Dockerfile. | Agreed |
 | C9  | The current Angular project moves from the repository root into its own frontend folder.                                                                             | Agreed |
 | C10 | All services stay in the one existing GitHub repository, with `.github/` at its root (GitHub Actions reads workflows only from there).                               | Agreed |
+| C11 | Folder names: `frontend/` for the Angular app, `gateway/` for the API gateway, and `<name>-service/` for each backend service (for example `curriculum-service/`).   | Agreed |
+| C12 | `docs/` and the Docker Compose files stay at the repository root, outside the service folders.                                                                       | Agreed |
 
 ## Requirements
 
@@ -226,5 +228,3 @@ have to browse through semesters to find it.
 - [ ] Besides Markdown pages, what else can a new section hold (for example lists, links, uploaded PDFs or images)?
 - [ ] Can admins add menus in more than one place (top menu, footer), or only the main menu?
 - [ ] Should glossary terms later be searchable from the same search box (R12)?
-- [ ] Folder names (C8): proposed `frontend/`, `gateway/` and one `<name>-service/` per backend service. Keep these or choose others?
-- [ ] Shared material: proposed to keep `docs/` and the Docker Compose files at the repository root, outside the service folders. OK?
