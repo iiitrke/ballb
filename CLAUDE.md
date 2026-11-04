@@ -10,7 +10,8 @@ In progress: split into Angular SSR frontend + Spring Boot microservices + Postg
 ## Specs come first
 
 - Specs live in `docs/specs/`. Read the relevant spec before starting work.
-- The main spec is `docs/specs/architecture.md`. How to write specs: `docs/specs/HOW-TO-WRITE-SPECS.md`.
+- Each feature has a folder `docs/specs/<feature>/` with `requirements.md`, `design.md` and `tasks.md`.
+  Current feature: `docs/specs/backend-split/`. How to write specs: `docs/specs/HOW-TO-WRITE-SPECS.md`.
 - Follow items marked **Agreed**. Items marked **Proposed** may be followed, but say so.
   Items that are **Open** or missing: ask, do not guess.
 - Do only the phase or task you were asked for. Do not change other areas without asking.
@@ -20,7 +21,21 @@ In progress: split into Angular SSR frontend + Spring Boot microservices + Postg
 
 ## Writing or updating specs
 
-Full guide: `docs/specs/HOW-TO-WRITE-SPECS.md`. Start new specs from `docs/specs/_template.md`. Key rules:
+### Workflow: requirements → design → tasks → code
+
+1. **Requirements** (`requirements.md`): user stories + EARS acceptance criteria with IDs (`R1.1`). No technology.
+   Stop and wait for the user's approval.
+2. **Design** (`design.md`): how the requirements are met. Stop and wait for approval.
+3. **Tasks** (`tasks.md`): small checkbox tasks, each with "Do", "Done when" and "Covers: R…". Stop and wait for approval.
+4. **Code**: implement one task at a time, only from an approved `tasks.md`. Run its "Done when" check, tick
+   its box in the same change, then stop and report.
+
+Never skip a step or write the next file before the user approves the current one. Start new specs from
+`docs/specs/_templates/` (or with the `/spec` skill).
+
+### Key rules
+
+Full guide: `docs/specs/HOW-TO-WRITE-SPECS.md`.
 
 1. Open with the goal and the reason, in one or two sentences.
 2. Be specific: exact names, versions, paths and numbers. No "fast", "modern" or "sensible".

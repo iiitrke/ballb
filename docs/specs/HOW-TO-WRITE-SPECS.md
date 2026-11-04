@@ -4,7 +4,8 @@ A spec is a written plan that says **what to build, why, and how you will know i
 A good spec lets Claude build the right thing on the first try. A weak spec makes Claude guess, and
 guesses are where bugs come from.
 
-This guide is in simple words. Read it once, then use [`_template.md`](./_template.md) for every new spec.
+This guide is in simple words. Read it once, then start every new feature from the templates in
+[`_templates/`](./_templates/).
 
 ---
 
@@ -19,6 +20,48 @@ This guide is in simple words. Read it once, then use [`_template.md`](./_templa
    wrong one. Keep one fact in one place.
 
 So the whole job of a spec is: **remove guesses.**
+
+---
+
+## The three-file method: requirements → design → tasks → code
+
+Every feature gets its own folder, `docs/specs/<feature>/`, with three files written **in this order**.
+Each file is approved by you before the next one is written. Code comes last.
+
+| Step | File              | Answers                                    | Written in                                                                   |
+| ---- | ----------------- | ------------------------------------------ | ---------------------------------------------------------------------------- |
+| 1    | `requirements.md` | **What** must the system do, and for whom? | User stories + EARS acceptance criteria. No technology                       |
+| 2    | `design.md`       | **How** will we build it?                  | Architecture diagram, decisions with "why", data model, APIs, error handling |
+| 3    | `tasks.md`        | **In what steps?**                         | Small checkbox tasks, each with "Done when" and the requirements it covers   |
+| 4    | Code              | —                                          | One task at a time; tick its box when its check passes                       |
+
+**Why this order works:** a mistake found in requirements costs one sentence to fix. The same mistake found
+in code costs a rewrite. Each step is a cheap checkpoint before the expensive one.
+
+### Writing requirements in EARS form
+
+EARS (Easy Approach to Requirements Syntax) gives every requirement one of five fixed shapes, so it is
+always clear and testable:
+
+| Shape                                 | Use it for             | Example from this project                                                        |
+| ------------------------------------- | ---------------------- | -------------------------------------------------------------------------------- |
+| THE SYSTEM SHALL …                    | Always true            | THE SYSTEM SHALL store text that students read as Markdown.                      |
+| WHEN <event>, THE SYSTEM SHALL …      | A reaction to an event | WHEN a student opens `/glossary`, THE SYSTEM SHALL list all terms.               |
+| WHILE <state>, THE SYSTEM SHALL …     | True during a state    | WHILE developing, THE SYSTEM SHALL run the database in Docker.                   |
+| IF <problem>, THEN THE SYSTEM SHALL … | Errors and edge cases  | IF the subject code does not exist, THEN THE SYSTEM SHALL respond with HTTP 404. |
+| WHERE <option>, THE SYSTEM SHALL …    | Optional features      | WHERE Hindi text exists, THE SYSTEM SHALL show it in Hindi mode.                 |
+
+Give every criterion an ID (`R2.4`). Tasks then say which IDs they cover, so every line of code traces back
+to a reason.
+
+### Asking Claude to run the method
+
+- New feature: type `/spec <feature name>`. Claude writes `requirements.md` and stops for your review.
+- Say "approved" (or give changes). Claude then writes `design.md`, stops, then `tasks.md`, stops.
+- Build: "Do task 1.1 from `docs/specs/backend-split/tasks.md`." Claude does that one task, runs its
+  "Done when" check, ticks the box, and stops.
+
+See [`backend-split/`](./backend-split/) for a complete example.
 
 ---
 
@@ -85,7 +128,7 @@ AI likes to be helpful and may "improve" things you did not ask about. Stop that
 
 One example beats a paragraph of description. Show a sample JSON response, a sample Markdown file,
 a sample URL, a sample command. See the subject response example in
-[`architecture.md`](./architecture.md#api-contract).
+[`backend-split/design.md`](./backend-split/design.md#api-contract).
 
 ### 8. Use tables and lists for facts, sentences for reasons
 
@@ -131,22 +174,22 @@ Claude copies patterns well. Tell it where the good examples are.
 A good request names the spec, the part to do, the limits, and the finish line:
 
 ```text
-Read docs/specs/architecture.md.
-Do Phase 1 (Backend skeleton) only.
+Read docs/specs/backend-split/ (requirements.md, design.md, tasks.md).
+Do task 1.1 from tasks.md only.
 Do not change anything under apps/ or libs/.
-Done when all three services start locally and /actuator/health returns UP.
+Run its "Done when" check, tick the box, then stop.
 Before you start, list any assumptions or open questions. Ask me if something is unclear.
 ```
 
 Why each line matters:
 
-| Line                    | What it prevents                          |
-| ----------------------- | ----------------------------------------- |
-| "Read the spec"         | Claude working from memory or guesses     |
-| "Phase 1 only"          | Doing too much at once                    |
-| "Do not change…"        | Surprise edits in other parts of the code |
-| "Done when…"            | Stopping too early, or never stopping     |
-| "List assumptions, ask" | Silent guesses becoming code              |
+| Line                        | What it prevents                          |
+| --------------------------- | ----------------------------------------- |
+| "Read the spec"             | Claude working from memory or guesses     |
+| "Task 1.1 only"             | Doing too much at once                    |
+| "Do not change…"            | Surprise edits in other parts of the code |
+| "Run its check, tick, stop" | Stopping too early, or never stopping     |
+| "List assumptions, ask"     | Silent guesses becoming code              |
 
 ---
 
@@ -179,8 +222,10 @@ Why each line matters:
 
 ## Files in this folder
 
-| File                                               | What it is                                              |
-| -------------------------------------------------- | ------------------------------------------------------- |
-| [`HOW-TO-WRITE-SPECS.md`](./HOW-TO-WRITE-SPECS.md) | This guide                                              |
-| [`_template.md`](./_template.md)                   | Copy this to start a new spec                           |
-| [`architecture.md`](./architecture.md)             | The frontend/backend architecture spec (a full example) |
+| File                                                         | What it is                                        |
+| ------------------------------------------------------------ | ------------------------------------------------- |
+| [`HOW-TO-WRITE-SPECS.md`](./HOW-TO-WRITE-SPECS.md)           | This guide                                        |
+| [`_templates/requirements.md`](./_templates/requirements.md) | Template for step 1                               |
+| [`_templates/design.md`](./_templates/design.md)             | Template for step 2                               |
+| [`_templates/tasks.md`](./_templates/tasks.md)               | Template for step 3                               |
+| [`backend-split/`](./backend-split/)                         | The frontend/backend split: a full worked example |

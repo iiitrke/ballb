@@ -1,6 +1,6 @@
-# BA.LLB Portal — Frontend/Backend Architecture Spec
+# Backend split — Design
 
-As of 2026-11-04 · Living version: [Claude Doc](https://claude.ai/artifact/GKFbjVkw56ZC69nMATfcKG) — keep this file in sync when the spec changes.
+As of 2026-11-04 · Requirements: [requirements.md](./requirements.md) · Tasks: [tasks.md](./tasks.md) · Living version: [Claude Doc](https://claude.ai/artifact/GKFbjVkw56ZC69nMATfcKG) — keep this file in sync when the spec changes.
 
 **How to read this spec:** _Agreed_ means decided in discussion on 2026-11-04; _Proposed_ means Claude's suggestion, awaiting approval.
 
@@ -209,23 +209,14 @@ ballb/
 │   ├── docker-compose.test.yml Full stack, built locally
 │   ├── docker-compose.vps.yml  Full stack from GHCR images (staging and prod)
 │   └── postgres/init/          Creates one database and user per service
-├── docs/specs/                 This spec
+├── docs/specs/                 Specs (requirements, design, tasks per feature)
 ├── tools/content-export/       One-time script: .data.ts → Flyway seed SQL
 └── .github/workflows/          ci.yml, deploy-staging.yml, deploy-prod.yml
 ```
 
 ## Implementation phases
 
-_Status: proposed._
-
-Each phase ends with something runnable and merges to `main` on its own branch. Phase 1 has started on `feat/backend-skeleton`.
-
-1. **Backend skeleton:** Maven multi-module `backend/` with gateway, curriculum-service and glossary-service; Flyway schemas from the data model; `docker-compose.dev.yml` with Postgres. Done when all three services start locally and report healthy.
-2. **Content migration:** export script turns today's `.data.ts` files into Flyway seed migrations. Done when the databases hold every semester, subject and glossary term.
-3. **APIs:** the four endpoints, Markdown rendering and cleaning, caching, problem-details errors, tests. Done when the gateway serves every endpoint in dev.
-4. **Angular SSR:** add `@angular/ssr`, replace hardcoded data with `HttpClient` calls, enable hydration and the transfer cache, dev proxy to the gateway. Done when every page renders on the server with backend data.
-5. **Test environment:** Dockerfiles for all four apps and `docker-compose.test.yml`. Done when the full stack runs locally in containers from one command.
-6. **Staging and prod:** GHCR images, the three workflows, `docker-compose.vps.yml`, nginx server blocks for both domains. Done when a merge to `main` updates staging and a `v*` tag updates prod.
+The phases and their tasks live in [tasks.md](./tasks.md).
 
 ## Open questions and future work
 
