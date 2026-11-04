@@ -57,10 +57,13 @@ Full guide: `docs/specs/HOW-TO-WRITE-SPECS.md`.
 
 ## Commands
 
-- `npx nx serve ballb-portal` — run the Angular dev server
-- `npx nx build ballb-portal` — production build
-- `npx nx run-many -t lint` — lint everything
-- `npx nx format:write` — format with Prettier
+All frontend commands run in `frontend/` (run from the repository root as shown):
+
+- `cd frontend && npm ci` — install dependencies
+- `cd frontend && npx nx serve ballb-portal` — run the Angular dev server (http://localhost:4200)
+- `cd frontend && npx nx build ballb-portal` — production build to `frontend/dist/apps/ballb-portal`
+- `cd frontend && npx nx run-many -t lint` — lint everything
+- `cd frontend && npx nx format:write` — format with Prettier
 
 ## Git
 

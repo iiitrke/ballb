@@ -9,7 +9,7 @@ zoneless change detection).
 > **Content notice:** Each subject has a `source` of `official` or `sample`, and the UI badges it
 > accordingly.
 >
-> - **Official:** `libs/curriculum/data-access/src/lib/official-papers.data.ts` holds papers
+> - **Official:** `frontend/libs/curriculum/data-access/src/lib/official-papers.data.ts` holds papers
 >   transcribed from the Shakambhari University syllabus (codes 1078204, 1078205, 1078206,
 >   1078280). They are placed in Semester 10 until their semester is confirmed.
 > - **Sample:** everything else in `curriculum.data.ts` is placeholder content to be replaced.
@@ -21,20 +21,24 @@ zoneless change detection).
 
 ## Getting started
 
+The Angular app lives in `frontend/`. Run these from the repository root:
+
 ```sh
-npm install
-npx nx serve ballb-portal     # http://localhost:4200
+cd frontend && npm ci
+cd frontend && npx nx serve ballb-portal     # http://localhost:4200
 ```
 
 ## Common commands
 
-| Command                     | What it does                                 |
-| --------------------------- | -------------------------------------------- |
-| `npx nx serve ballb-portal` | Run the dev server                           |
-| `npx nx build ballb-portal` | Production build to `dist/apps/ballb-portal` |
-| `npx nx run-many -t lint`   | Lint every project                           |
-| `npx nx graph`              | Visualise the project dependency graph       |
-| `npx nx format:write`       | Format files with Prettier                   |
+All commands run from the repository root.
+
+| Command                                    | What it does                                          |
+| ------------------------------------------ | ----------------------------------------------------- |
+| `cd frontend && npx nx serve ballb-portal` | Run the dev server                                    |
+| `cd frontend && npx nx build ballb-portal` | Production build to `frontend/dist/apps/ballb-portal` |
+| `cd frontend && npx nx run-many -t lint`   | Lint every project                                    |
+| `cd frontend && npx nx graph`              | Visualise the project dependency graph                |
+| `cd frontend && npx nx format:write`       | Format files with Prettier                            |
 
 ## Deployment
 
@@ -60,13 +64,15 @@ To make this work, the repository needs:
 The app is not tied to a domain. The base path is set when you build:
 
 ```sh
-npx nx build ballb-portal --base-href=/      # site served at the domain root
+cd frontend && npx nx build ballb-portal --base-href=/      # site served at the domain root
 ```
 
-Serve `dist/apps/ballb-portal/browser/` with any static web server (e.g. nginx). Configure the
+Serve `frontend/dist/apps/ballb-portal/browser/` with any static web server (e.g. nginx). Configure the
 server to fall back to `index.html` for unknown paths so Angular routes work on refresh.
 
 ## Workspace layout
+
+Inside `frontend/`:
 
 ```
 apps/
@@ -102,15 +108,15 @@ Projects are tagged and `@nx/enforce-module-boundaries` enforces these rules:
 
 ## Adding or editing content
 
-- **Subjects and units:** edit `libs/curriculum/data-access/src/lib/curriculum.data.ts`.
+- **Subjects and units:** edit `frontend/libs/curriculum/data-access/src/lib/curriculum.data.ts`.
   Each subject has a `code` (used in the URL), `title`, `category`, `credits`, `summary`,
   optional `statutes`, and a `units` list.
-- **Glossary terms:** edit `libs/glossary/feature/src/lib/glossary.data.ts`.
+- **Glossary terms:** edit `frontend/libs/glossary/feature/src/lib/glossary.data.ts`.
 
 ## Adding a new feature library
 
 ```sh
-npx nx g @nx/angular:library libs/<area>/feature --tags=type:feature,scope:<area>
+cd frontend && npx nx g @nx/angular:library libs/<area>/feature --tags=type:feature,scope:<area>
 ```
 
-Then lazy-load its routes from `apps/ballb-portal/src/app/app.routes.ts`.
+Then lazy-load its routes from `frontend/apps/ballb-portal/src/app/app.routes.ts`.
