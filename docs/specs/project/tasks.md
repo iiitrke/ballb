@@ -3,7 +3,7 @@
 As of 2026-11-04 · Step 3 of 3 · Requirements: [requirements.md](./requirements.md) · Design:
 [design.md](./design.md)
 
-**Approval:** Approved 2026-11-04. Changed 2026-11-04: task 7.2 (staging host), approved 2026-11-04; changed again 2026-11-04 (same VPS), waiting for review.
+**Approval:** Approved 2026-11-04. Changed 2026-11-04: task 7.2 (staging host), approved 2026-11-04; changed again 2026-11-04 (same VPS), approved 2026-11-04.
 
 **How to use this file:** do one task at a time, in order. A task is finished only when its "Done when"
 check passes. Then tick its box (`- [x]`) in the same change as the code. Each phase is merged to `main`
