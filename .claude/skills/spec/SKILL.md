@@ -14,9 +14,9 @@ files, written in order, each approved by the user before the next.
 - No argument: list the folders in `docs/specs/` (skip `_templates`) and ask which feature, or a new name.
 - Check which of `requirements.md`, `design.md`, `tasks.md` exist and read each one's `**Approval:**` line.
   Resume at the first file that is missing or not yet `Approved`. Never write a file while the one before
-  it is not Approved.
+  it is not Approved. If all three are Approved, report the next unticked task in `tasks.md` and ask
+  whether to do it.
 - Drafts in the feature's `notes/` folder are input for their step, not approved files.
-  If all exist, report the next unticked task in `tasks.md` and ask whether to do it.
 
 ## 2. Requirements (`requirements.md`)
 
