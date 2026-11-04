@@ -2,7 +2,7 @@
 
 As of 2026-11-04 · Step 1 of 3 · Next: `design.md` (written after this file is approved)
 
-**Approval:** Waiting for review.
+**Approval:** Approved 2026-11-04. All items that were Proposed were accepted as written and are now Agreed. Open items stay Open.
 
 **Labels:** _Agreed_ = decided by the owner on 2026-11-04 · _Proposed_ = Claude's suggestion, not
 confirmed · _Open_ = not decided, ask first.
@@ -39,9 +39,9 @@ and stopped with one command each, so that staging is quick to bring up, rebuild
 | ID   | Acceptance criterion                                                                                                    | Status   |
 | ---- | ----------------------------------------------------------------------------------------------------------------------- | -------- |
 | R1.1 | THE SYSTEM SHALL start the staging proxy (nginx-proxy and acme-companion) with one command and stop it with one command. | Agreed   |
-| R1.2 | WHEN the staging host restarts, THE SYSTEM SHALL start the proxy and the staging containers again on its own.           | Proposed |
-| R1.3 | WHEN the containers are recreated, THE SYSTEM SHALL keep staging data (database volumes) and certificates.              | Proposed |
-| R1.4 | WHEN the developer asks to rebuild it, THE SYSTEM SHALL recreate staging from scratch with one command.                 | Proposed |
+| R1.2 | WHEN the staging host restarts, THE SYSTEM SHALL start the proxy and the staging containers again on its own.           | Agreed   |
+| R1.3 | WHEN the containers are recreated, THE SYSTEM SHALL keep staging data (database volumes) and certificates.              | Agreed   |
+| R1.4 | WHEN the developer asks to rebuild it, THE SYSTEM SHALL recreate staging from scratch with one command.                 | Agreed   |
 
 ### R2. nginx finds containers on its own
 
@@ -52,9 +52,9 @@ starts, so that I never edit nginx config by hand.
 | ---- | ---------------------------------------------------------------------------------------------------------------------------------------- | -------- |
 | R2.1 | THE SYSTEM SHALL make nginx the only entry point for staging, on ports 80 and 443.                                                       | Agreed   |
 | R2.2 | WHEN a container starts with a host name set (for example `VIRTUAL_HOST=staging.<domain>`), THE SYSTEM SHALL route that host name to it. | Agreed   |
-| R2.3 | WHEN that container stops, THE SYSTEM SHALL stop routing its host name.                                                                  | Proposed |
-| R2.4 | THE SYSTEM SHALL route only to containers that set a host name; all other containers stay unreachable from outside.                      | Proposed |
-| R2.5 | WHEN a request arrives over HTTP, THE SYSTEM SHALL redirect it to HTTPS.                                                                 | Proposed |
+| R2.3 | WHEN that container stops, THE SYSTEM SHALL stop routing its host name.                                                                  | Agreed   |
+| R2.4 | THE SYSTEM SHALL route only to containers that set a host name; all other containers stay unreachable from outside.                      | Agreed   |
+| R2.5 | WHEN a request arrives over HTTP, THE SYSTEM SHALL redirect it to HTTPS.                                                                 | Agreed   |
 
 ### R3. SSL certificates are automatic
 
@@ -74,11 +74,11 @@ changes in a production-like setup before releasing them.
 
 | ID   | Acceptance criterion                                                                                                       | Status   |
 | ---- | -------------------------------------------------------------------------------------------------------------------------- | -------- |
-| R4.1 | THE SYSTEM SHALL run the portal's VPS Compose file for staging, with only staging settings (domain, secrets) changed.      | Proposed |
-| R4.2 | THE SYSTEM SHALL serve staging at `https://staging.<domain>`.                                                              | Proposed |
+| R4.1 | THE SYSTEM SHALL run the portal's VPS Compose file for staging, with only staging settings (domain, secrets) changed.      | Agreed   |
+| R4.2 | THE SYSTEM SHALL serve staging at `https://staging.<domain>`.                                                              | Agreed   |
 | R4.3 | THE SYSTEM SHALL let nginx route only to the portal's gateway, as on production (project constraint C6).                   | Agreed   |
 | R4.4 | WHEN a change is merged to `main`, THE SYSTEM SHALL deploy it to staging through GitHub Actions (project R7.5).            | Agreed   |
-| R4.5 | THE SYSTEM SHALL keep staging data, secrets and Docker networks separate from production.                                  | Proposed |
+| R4.5 | THE SYSTEM SHALL keep staging data, secrets and Docker networks separate from production.                                  | Agreed   |
 
 ## Open questions
 

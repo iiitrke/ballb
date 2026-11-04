@@ -4,7 +4,7 @@ As of 2026-11-04 · Step 1 of 3 · Next: [design.md](./design.md)
 
 These are the requirements for the whole project. Later features get their own folder in `docs/specs/`.
 
-**Approval:** Approved 2026-11-04. Changed 2026-11-04: C5 (staging gets its own server), waiting for review. All items that were Proposed were accepted as written and are now Agreed.
+**Approval:** Approved 2026-11-04. Changed 2026-11-04: C5 (staging host), approved 2026-11-04. All items that were Proposed were accepted as written and are now Agreed.
 Open questions below are settled during design.
 
 **Labels:** _Agreed_ = decided in discussion on 2026-11-04 · _Proposed_ = Claude's suggestion, not
@@ -38,7 +38,7 @@ Technology the project owner has already fixed. The design must use these; it do
 | C2  | The backend is Spring Boot microservices behind one API gateway.                                                                                                                                                                                         | Agreed                      |
 | C3  | Each service owns its own database; no other service reads or writes it.                                                                                                                                                                                 | Agreed                      |
 | C4  | Content is stored in a database, written as Markdown.                                                                                                                                                                                                    | Agreed                      |
-| C5  | Production runs in Docker on the VPS, behind the existing nginx and Let's Encrypt containers. Staging runs in Docker on a staging host (no Docker in Docker), behind nginx-proxy and Let's Encrypt ([staging server spec](../staging-server/requirements.md)). | Changed, waiting for review |
+| C5  | Production runs in Docker on the VPS, behind the existing nginx and Let's Encrypt containers. Staging runs in Docker on a staging host (no Docker in Docker), behind nginx-proxy and Let's Encrypt ([staging server spec](../staging-server/requirements.md)). | Agreed |
 | C6  | On the VPS, nginx connects only to the gateway, and the gateway connects to the services over the internal Docker network.                                                                                                                               | Agreed                      |
 | C7  | Deployments run through GitHub Actions.                                                                                                                                                                                                                  | Agreed                      |
 | C8  | The repository root holds one folder per service, frontend and backend alike. Each folder is self-contained: its own code, build files, dependencies and Dockerfile.                                                                                     | Agreed                      |
