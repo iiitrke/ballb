@@ -11,7 +11,7 @@ on its own branch before the next phase starts.
 
 ## Phase 0: Repository layout
 
-- [ ] **0.1 Move the Angular project into `frontend/`**
+- [x] **0.1 Move the Angular project into `frontend/`**
   - Do: `git mv` `apps/`, `libs/`, `nx.json`, `package.json`, `package-lock.json`, `tsconfig.base.json`,
     `eslint.config.mjs`, `.prettierrc` and `.prettierignore` into `frontend/`; delete root `node_modules/`,
     `dist/`, `.nx/`, `.angular/`. `.editorconfig`, `.gitignore`, `README.md`, `CLAUDE.md`, `docs/` stay at the root.

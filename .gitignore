@@ -2,14 +2,17 @@
 node_modules
 
 # Build output
-/dist
-/tmp
-/out-tsc
-/coverage
+/frontend/dist
+/frontend/tmp
+/frontend/out-tsc
+/frontend/coverage
+
+# Java / Maven build output (one folder per service)
+target/
 
 # Nx / Angular caches
-.nx/cache
-.nx/workspace-data
+/frontend/.nx/cache
+/frontend/.nx/workspace-data
 .angular
 
 # IDEs and editors
