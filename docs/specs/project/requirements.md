@@ -21,7 +21,7 @@ The existing Angular prototype in this repository supplies the starting content 
 ## Out of scope
 
 - Writing new content or new Hindi translations.
-- Search across subject content (only the glossary is searchable).
+- Searching inside the text of subject content. Search covers subject codes and titles (R12) and the glossary (R3).
 
 ## Constraints
 
@@ -182,6 +182,21 @@ can grow beyond semesters and the glossary without a developer.
 | R11.9  | WHEN an admin disables a student account, THE SYSTEM SHALL stop that student from signing in.                                           | Proposed |
 | R11.10 | THE SYSTEM SHALL let anyone read the portal's content without signing in.                                                               | Open     |
 
+### R12. Users search subjects by code
+
+**User story:** As a student, I want to type a paper code and go straight to that subject, so that I don't
+have to browse through semesters to find it.
+
+| ID    | Acceptance criterion                                                                                                                                                            | Status   |
+| ----- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | -------- |
+| R12.1 | THE SYSTEM SHALL provide a search box on every page that finds subjects by their code.                                                                                          | Agreed   |
+| R12.2 | WHEN a user types a full or partial code (for example `1078` or `bl-10`), THE SYSTEM SHALL list matching subjects with code, title and semester, ignoring upper and lower case. | Proposed |
+| R12.3 | THE SYSTEM SHALL also match subject titles, in English and in Hindi.                                                                                                            | Proposed |
+| R12.4 | WHEN a user enters a code that matches exactly one subject, THE SYSTEM SHALL open that subject's page.                                                                          | Proposed |
+| R12.5 | IF no subject matches, THEN THE SYSTEM SHALL say so and suggest browsing semesters.                                                                                             | Proposed |
+| R12.6 | THE SYSTEM SHALL NOT show disabled subjects in search results.                                                                                                                  | Proposed |
+| R12.7 | THE SYSTEM SHALL allow search without signing in.                                                                                                                               | Open     |
+
 ## Open questions
 
 - [ ] Production domain name, and whether staging uses `staging.<domain>`.
@@ -200,3 +215,4 @@ can grow beyond semesters and the glossary without a developer.
 - [ ] Must students sign in to read content, or is reading open to everyone (R11.10)?
 - [ ] Can anyone sign up, or only Shakambhari University students (for example by university email or enrolment number)?
 - [ ] Sign-in method for students: email and password, Google account, or both?
+- [ ] Search (R12): codes only, or codes and titles? Should it later search glossary terms from the same box?
