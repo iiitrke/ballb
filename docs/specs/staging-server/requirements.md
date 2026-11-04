@@ -82,9 +82,9 @@ changes in a production-like setup before releasing them.
 
 ## Open questions
 
-- [ ] **Where does staging run:** your laptop, the production VPS (next to production), or another machine? This decides R3.3 and R4.4.
+- [x] **Where does staging run?** On the server, i.e. the production VPS, next to production (answered 2026-11-04). It is reachable from the internet, so real Let's Encrypt (R3.1) and GitHub deploys (R4.4) work and the R3.3 fallback is not needed.
 - [ ] If on the production VPS: production already has nginx and Let's Encrypt on ports 80/443, and only one proxy can hold those ports. Should staging sit behind production's existing proxy (as one more host name) instead of running its own nginx-proxy?
-- [ ] Can GitHub reach the staging host from the internet (needed for automatic deploys, R4.4, and for real Let's Encrypt certificates, R3.1)?
+- [x] Can GitHub reach the staging host? Yes, it is the internet-facing VPS (answered 2026-11-04).
 - [ ] Does production also use nginx-proxy and acme-companion? If not, staging differs from production in its proxy.
 - [ ] Where should the staging files live: this repository (proposed: `docker/staging/`) or a separate one?
 - [ ] Security for an internet-facing staging host: firewall, SSH key only, automatic security updates?
