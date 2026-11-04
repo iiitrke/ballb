@@ -249,7 +249,7 @@ reading `DB_URL`, `DB_USER`, `DB_PASSWORD` with local defaults, and a Testcontai
   - Done when: a pull request touching one service runs only that service's job.
   - Covers: C7, C10
 - [ ] **7.2 Staging deploy**: `deploy-staging.yml` pushes changed images to GHCR and redeploys `ballb-staging` on
-      the staging server (built from the [staging server spec](../staging-server/tasks.md); changed, waiting for review).
+      the staging host (built from the [staging server spec](../staging-server/tasks.md); changed, waiting for review).
   - Done when: a merge to `main` updates `https://staging.<domain>`.
   - Covers: R7.3, R7.5
 - [ ] **7.3 VPS setup**: `docker/docker-compose.vps.yml`; gateway joins the nginx network; nginx server
