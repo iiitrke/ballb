@@ -70,8 +70,8 @@ to a reason.
 - Ideas written too early go in the feature's `notes/` folder. They are input for a later step, never
   an approved spec.
 
-[`project/`](./project/) holds the whole project's spec and is the live example: requirements are written
-and waiting for approval; early design and task drafts wait in `project/notes/`. Later features get their
+[`project/`](./project/) holds the whole project's spec and is the live example: requirements are
+approved, the design is waiting for review, and an early task draft waits in `project/notes/`. Later features get their
 own folder next to it.
 
 ---
@@ -139,7 +139,7 @@ AI likes to be helpful and may "improve" things you did not ask about. Stop that
 
 One example beats a paragraph of description. Show a sample JSON response, a sample Markdown file,
 a sample URL, a sample command. See the subject response example in
-[`project/notes/design-draft.md`](./project/notes/design-draft.md#api-contract).
+[`project/design.md`](./project/design.md#interfaces).
 
 ### 8. Use tables and lists for facts, sentences for reasons
 
@@ -233,10 +233,10 @@ Why each line matters:
 
 ## Files in this folder
 
-| File                                                         | What it is                                                        |
-| ------------------------------------------------------------ | ----------------------------------------------------------------- |
-| [`HOW-TO-WRITE-SPECS.md`](./HOW-TO-WRITE-SPECS.md)           | This guide                                                        |
-| [`_templates/requirements.md`](./_templates/requirements.md) | Template for step 1                                               |
-| [`_templates/design.md`](./_templates/design.md)             | Template for step 2                                               |
-| [`_templates/tasks.md`](./_templates/tasks.md)               | Template for step 3                                               |
-| [`project/`](./project/)                                     | The whole project's spec: the live example (step 1, requirements) |
+| File                                                         | What it is                                                  |
+| ------------------------------------------------------------ | ----------------------------------------------------------- |
+| [`HOW-TO-WRITE-SPECS.md`](./HOW-TO-WRITE-SPECS.md)           | This guide                                                  |
+| [`_templates/requirements.md`](./_templates/requirements.md) | Template for step 1                                         |
+| [`_templates/design.md`](./_templates/design.md)             | Template for step 2                                         |
+| [`_templates/tasks.md`](./_templates/tasks.md)               | Template for step 3                                         |
+| [`project/`](./project/)                                     | The whole project's spec: the live example (step 2, design) |
