@@ -5,8 +5,9 @@ description: Start or continue a spec-driven feature in this repo using requirem
 
 # Spec-driven workflow
 
-Follow `docs/specs/HOW-TO-WRITE-SPECS.md`. Each feature lives in `docs/specs/<feature-slug>/` with three
-files, written in order, each approved by the user before the next.
+Follow the spec rules in the root `CLAUDE.md`. Each feature lives in `docs/specs/<feature-slug>/` with three
+files, written in order, each approved by the user before the next. `docs/specs/HOW-TO-WRITE-SPECS.md` is
+the user's personal reference, not part of this workflow.
 
 ## 1. Find where the feature stands
 

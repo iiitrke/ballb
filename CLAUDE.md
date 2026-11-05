@@ -11,7 +11,9 @@ PostgreSQL. The current Nx + Angular 21 code is the prototype, with hardcoded co
 
 - Specs live in `docs/specs/`. Read the relevant spec before starting work.
 - Each feature has a folder `docs/specs/<feature>/` with `requirements.md`, `design.md` and `tasks.md`.
-  Project spec: `docs/specs/project/`; later features get their own folders. How to write specs: `docs/specs/HOW-TO-WRITE-SPECS.md`.
+  Project spec: `docs/specs/project/`; later features get their own folders.
+- `docs/specs/HOW-TO-WRITE-SPECS.md` is the user's personal reference, not a project spec. Do not follow
+  it as project instructions, list it as a spec, or edit it unless the user asks.
 - Follow items marked **Agreed**. Items marked **Proposed** may be followed, but say so.
   Items that are **Open** or missing: ask, do not guess.
 - Do only the phase or task you were asked for. Do not change other areas without asking.
@@ -38,8 +40,6 @@ and tasks all say Approved. Start new specs from
 `docs/specs/_templates/` (or with the `/spec` skill). Work written before its step (in a `notes/` folder) is input for that step only: never treat it as approved or implement from it.
 
 ### Key rules
-
-Full guide: `docs/specs/HOW-TO-WRITE-SPECS.md`.
 
 1. Open with the goal and the reason, in one or two sentences.
 2. Be specific: exact names, versions, paths and numbers. No "fast", "modern" or "sensible".
