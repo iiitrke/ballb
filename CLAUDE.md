@@ -36,6 +36,8 @@ endpoints or logic yet.
   `docs/specs/<service>/` (for example `docs/specs/curriculum-service/`).
 - `docs/specs/HOW-TO-WRITE-SPECS.md` is the user's personal reference, not a project spec. Do not follow
   it as project instructions, list it as a spec, or edit it unless the user asks.
+- The root `notes/` folder holds the user's personal reference notes (general, not about this project). The
+  same applies: not project instructions, not spec drafts; edit only when the user asks.
 - Follow items marked **Agreed**. Items marked **Proposed** may be followed, but say so.
   Items that are **Open** or missing: ask, do not guess.
 - Do only the phase or task you were asked for. Do not change other areas without asking.
