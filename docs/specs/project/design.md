@@ -3,7 +3,7 @@
 As of 2026-11-04 · Step 2 of 3 · Requirements: [requirements.md](./requirements.md) · Next: [tasks.md](./tasks.md)
 
 **Approval:** Approved 2026-11-04. All Proposed choices were accepted and are now Agreed. Changed
-2026-11-04: the staging row in Environments, approved 2026-11-04; changed again 2026-11-04 (same VPS, subdomain), approved 2026-11-04. Changed 2026-11-05: GitHub Pages is not used (the user's decision, 2026-11-05). Changed 2026-11-05: Gradle instead of Maven, Java packages, and empty service skeletons (the user's decisions); Build scripts and Gateway flavour are Proposed, waiting for review.
+2026-11-04: the staging row in Environments, approved 2026-11-04; changed again 2026-11-04 (same VPS, subdomain), approved 2026-11-04. Changed 2026-11-05: GitHub Pages is not used (the user's decision, 2026-11-05). Changed 2026-11-05: Gradle instead of Maven, Java packages, and empty service skeletons (the user's decisions); Build scripts and Gateway flavour are Proposed, waiting for review. Changed 2026-11-06: Shared code row added (the user's decision, 2026-11-05).
 
 **Labels:** _Agreed_ = decided by the owner · _Proposed_ = Claude's design choice, awaiting approval ·
 _Open_ = not decided. Every row ends with the requirement (`R…`) or constraint (`C…`) IDs it serves.
@@ -78,6 +78,7 @@ on the public domain, through the same path.
 | Gateway flavour  | Spring Cloud Gateway, reactive (WebFlux) variant                                                                                        | Its token filters and request rate limiter are the most complete                                | Proposed | C2, R6.1              |
 | Service internals | Root tasks create only empty service skeletons. Each service's tables, endpoints and logic come from its own spec in `docs/specs/<service>/` | The user's choice (2026-11-05): the root spec covers project structure and shared parts only | Agreed | C8                      |
 | Stack            | Spring Boot 4.0.9, Spring Cloud 2025.1.4, Java 17, PostgreSQL 17, Angular 21                                                            | Current stable releases; Java 17 matches the local JDK                                          | Agreed | C1, C2                  |
+| Shared code      | No shared jars between services. Each service keeps its own DTO classes; what services share (error format, token claims, API paths, environment variables) is written as contracts in this design | The user's choice (2026-11-05): keeps each service folder self-contained and building on its own | Agreed | C8                      |
 
 ## Components
 
