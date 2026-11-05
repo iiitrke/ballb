@@ -1,0 +1,12 @@
+# Local development: the glossary database from docker/docker-compose.dev.yml (host port 5433).
+spring:
+  datasource:
+    url: ${DB_URL:jdbc:postgresql://localhost:5433/glossary}
+    username: ${DB_USER:glossary}
+    password: ${DB_PASSWORD:glossary}
+
+# Show database and disk details on /actuator/health (dev only).
+management:
+  endpoint:
+    health:
+      show-details: always

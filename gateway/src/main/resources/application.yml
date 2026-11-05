@@ -1,0 +1,7 @@
+# Routes come from the gateway's own spec (docs/specs/gateway/).
+spring:
+  application:
+    name: gateway
+
+server:
+  port: 8080

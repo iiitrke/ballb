@@ -3,7 +3,7 @@
 As of 2026-11-04 · Step 3 of 3 · Requirements: [requirements.md](./requirements.md) · Design:
 [design.md](./design.md)
 
-**Approval:** Approved 2026-11-04. Changed 2026-11-04: task 7.2 (staging host), approved 2026-11-04; changed again 2026-11-04 (same VPS), approved 2026-11-04. Changed 2026-11-05: task 1.1 host port 5432 → 5433 (5432 clashed with another local Postgres), agreed by the user 2026-11-05. Changed 2026-11-05: tasks 0.2 and 7.5 removed, GitHub Pages is not used (the user's decision, 2026-11-05).
+**Approval:** Approved 2026-11-04. Changed 2026-11-04: task 7.2 (staging host), approved 2026-11-04; changed again 2026-11-04 (same VPS), approved 2026-11-04. Changed 2026-11-05: task 1.1 host port 5432 → 5433 (5432 clashed with another local Postgres), agreed by the user 2026-11-05. Changed 2026-11-05: tasks 0.2 and 7.5 removed, GitHub Pages is not used (the user's decision, 2026-11-05). Changed 2026-11-05: tasks 1.2–1.7 create empty skeletons built with Gradle; schemas and gateway routes move to each service's own spec (the user's decision, 2026-11-05).
 
 **How to use this file:** do one task at a time, in order. A task is finished only when its "Done when"
 check passes. Then tick its box (`- [x]`) in the same change as the code. Each phase is merged to `main`
@@ -25,8 +25,15 @@ on its own branch before the next phase starts.
 
 ## Phase 1: Local infrastructure and service skeletons
 
-Each service folder gets: Maven wrapper, Spring Boot 4.0.9, Java 17, Actuator, Flyway, a `dev` profile
-reading `DB_URL`, `DB_USER`, `DB_PASSWORD` with local defaults, and a Testcontainers context test.
+Each backend service folder (1.2–1.6) gets an empty Spring Boot 4.0.9 app on Java 17, built with its own
+Gradle wrapper (Kotlin DSL), group `com.itasca.ballb`, package `com.itasca.ballb.<name>`. It has Spring Web,
+Actuator, JDBC, the PostgreSQL driver, Flyway with an empty `db/migration` folder, a `dev` profile reading
+`DB_URL`, `DB_USER`, `DB_PASSWORD` with defaults for its own database on `localhost:5433`, and a
+Testcontainers context test.
+
+The skeletons hold no tables, endpoints or business logic. Each service's own spec in
+`docs/specs/<service>/` (requirements → design → tasks) adds those, starting from the tables in the design's
+"Data model" section.
 
 - [x] **1.1 Docker Compose for development**
   - Do: `docker/docker-compose.dev.yml` with PostgreSQL 17 (port 5433 on localhost) and Mailpit (fake email
@@ -35,33 +42,35 @@ reading `DB_URL`, `DB_USER`, `DB_PASSWORD` with local defaults, and a Testcontai
   - Done when: `docker compose -f docker/docker-compose.dev.yml up -d` starts both; `psql` lists the five
     databases, each owned by its own user; `http://localhost:8025` opens Mailpit.
   - Covers: C3, C12, R7.1
-- [ ] **1.2 `curriculum-service` skeleton** (port 8082)
-  - Do: Flyway `V1__schema.sql` with `semester`, `subject`, `audit_log` as in the design.
-  - Done when: `./mvnw spring-boot:run -Dspring-boot.run.profiles=dev` starts, `/actuator/health` is `UP`,
-    the tables exist, and `./mvnw verify` passes.
-  - Covers: C2, C3, C4, C8, C11
-- [ ] **1.3 `glossary-service` skeleton** (port 8083)
-  - Do: `V1__schema.sql` with `glossary_term`, `audit_log`.
-  - Done when: same checks as 1.2.
-  - Covers: C2, C3, C4, C8, C11
-- [ ] **1.4 `site-service` skeleton** (port 8084)
-  - Do: `V1__schema.sql` with `section`, `page`, `menu_item`, `reserved_slug` (seeded), `audit_log`.
-  - Done when: same checks as 1.2, and `reserved_slug` holds the six reserved words.
-  - Covers: C2, C3, C8, C11, R10.6
-- [ ] **1.5 `identity-service` skeleton** (port 8081)
-  - Do: `V1__schema.sql` with `app_user`, `sso_identity`, `one_time_code`, `refresh_token`.
-  - Done when: same checks as 1.2.
+- [x] **1.2 `curriculum-service` skeleton** (port 8082, database `curriculum`)
+  - Do: the skeleton described above.
+  - Done when: with the dev Compose running, `cd curriculum-service && ./gradlew bootRun --args='--spring.profiles.active=dev'`
+    starts and `http://localhost:8082/actuator/health` is `UP` (database included), and
+    `cd curriculum-service && ./gradlew build` passes, including the Testcontainers test.
   - Covers: C2, C3, C8, C11
-- [ ] **1.6 `notification-service` skeleton** (port 8085)
-  - Do: `V1__schema.sql` with `delivery_log`.
-  - Done when: same checks as 1.2.
+- [x] **1.3 `glossary-service` skeleton** (port 8083, database `glossary`)
+  - Do: the skeleton described above.
+  - Done when: same checks as 1.2, in `glossary-service/` on port 8083.
   - Covers: C2, C3, C8, C11
-- [ ] **1.7 `gateway` skeleton** (port 8080)
-  - Do: Spring Cloud Gateway routing `/api/identity/**`, `/api/curriculum/**`, `/api/glossary/**`,
-    `/api/site/**` to their services and `/**` to the frontend; no route for `/internal/**`.
-  - Done when: `/actuator/health` is `UP`; `curl -i localhost:8080/api/curriculum/x` returns a 404 from
-    curriculum-service (not a 503); `curl -i localhost:8080/internal/x` never reaches a service.
-  - Covers: C2, C6, R6.2
+- [x] **1.4 `site-service` skeleton** (port 8084, database `site`)
+  - Do: the skeleton described above.
+  - Done when: same checks as 1.2, in `site-service/` on port 8084.
+  - Covers: C2, C3, C8, C11
+- [x] **1.5 `identity-service` skeleton** (port 8081, database `identity`)
+  - Do: the skeleton described above.
+  - Done when: same checks as 1.2, in `identity-service/` on port 8081.
+  - Covers: C2, C3, C8, C11
+- [x] **1.6 `notification-service` skeleton** (port 8085, database `notification`)
+  - Do: the skeleton described above.
+  - Done when: same checks as 1.2, in `notification-service/` on port 8085.
+  - Covers: C2, C3, C8, C11
+- [x] **1.7 `gateway` skeleton** (port 8080, no database)
+  - Do: an empty Spring Boot 4.0.9 app on Java 17 with Spring Cloud Gateway 2025.1.4 (reactive) and Actuator,
+    Gradle wrapper (Kotlin DSL), package `com.itasca.ballb.gateway`. No routes: they come from the gateway's
+    own spec (`/api/<service>/**` to each service, `/**` to the frontend, nothing for `/internal/**`).
+  - Done when: `cd gateway && ./gradlew bootRun` starts, `http://localhost:8080/actuator/health` is `UP`, and
+    `cd gateway && ./gradlew build` passes.
+  - Covers: C2, C8, C11
 - [ ] **1.8 "Run locally" guide**
   - Do: a section in the root `README.md`: start Compose, run each service, run the frontend, ports.
   - Done when: following only that section, every service reports `UP`.

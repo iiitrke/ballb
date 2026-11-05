@@ -3,7 +3,7 @@
 As of 2026-11-04 · Step 2 of 3 · Requirements: [requirements.md](./requirements.md) · Next: [tasks.md](./tasks.md)
 
 **Approval:** Approved 2026-11-04. All Proposed choices were accepted and are now Agreed. Changed
-2026-11-04: the staging row in Environments, approved 2026-11-04; changed again 2026-11-04 (same VPS, subdomain), approved 2026-11-04. Changed 2026-11-05: GitHub Pages is not used (the user's decision, 2026-11-05).
+2026-11-04: the staging row in Environments, approved 2026-11-04; changed again 2026-11-04 (same VPS, subdomain), approved 2026-11-04. Changed 2026-11-05: GitHub Pages is not used (the user's decision, 2026-11-05). Changed 2026-11-05: Gradle instead of Maven, Java packages, and empty service skeletons (the user's decisions); Build scripts and Gateway flavour are Proposed, waiting for review.
 
 **Labels:** _Agreed_ = decided by the owner · _Proposed_ = Claude's design choice, awaiting approval ·
 _Open_ = not decided. Every row ends with the requirement (`R…`) or constraint (`C…`) IDs it serves.
@@ -72,7 +72,11 @@ on the public domain, through the same path.
 | Freshness        | Services clear their HTML cache on every admin save; public `GET`s send `Cache-Control: max-age=60`                                     | Changes are visible within about a minute, inside the 5-minute limit                            | Agreed | R1.1, R9.2, R9.10       |
 | Service calls    | Plain REST over the internal network; `/internal/**` paths are never routed by the gateway                                              | Simple for one host; internal calls can't be reached from outside                               | Agreed | R6.2                    |
 | Discovery        | Docker Compose DNS names (`curriculum-service:8082`); no Eureka or Consul                                                               | A fixed set of services on one host                                                             | Agreed | C2                      |
-| Builds           | Each folder is its own project: Maven wrapper per service, npm/Nx in `frontend/`                                                        | Matches self-contained folders; each service builds and ships alone                             | Agreed | C8                      |
+| Builds           | Each folder is its own project: Gradle wrapper per service, npm/Nx in `frontend/`                                                       | Matches self-contained folders; each service builds and ships alone. Gradle is the user's choice (2026-11-05) | Agreed | C8                      |
+| Build scripts    | Gradle Kotlin DSL (`build.gradle.kts`, `settings.gradle.kts`)                                                                           | Gradle's default for new builds; IDE completion and type checks in build files                  | Proposed | C8                    |
+| Java packages    | Group `com.itasca.ballb`; each service's base package is `com.itasca.ballb.<name>` (for example `com.itasca.ballb.curriculum`)          | The user's choice (2026-11-05); one prefix for every service                                    | Agreed | C8, C11                 |
+| Gateway flavour  | Spring Cloud Gateway, reactive (WebFlux) variant                                                                                        | Its token filters and request rate limiter are the most complete                                | Proposed | C2, R6.1              |
+| Service internals | Root tasks create only empty service skeletons. Each service's tables, endpoints and logic come from its own spec in `docs/specs/<service>/` | The user's choice (2026-11-05): the root spec covers project structure and shared parts only | Agreed | C8                      |
 | Stack            | Spring Boot 4.0.9, Spring Cloud 2025.1.4, Java 17, PostgreSQL 17, Angular 21                                                            | Current stable releases; Java 17 matches the local JDK                                          | Agreed | C1, C2                  |
 
 ## Components
@@ -214,7 +218,7 @@ sequenceDiagram
 
 | Environment | Where                                                                                                                       | How it runs                                                                                                                                     | Entry                      | Serves   |
 | ----------- | --------------------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------- | -------------------------- | -------- |
-| dev         | Laptop                                                                                                                      | `frontend` with `nx serve`; services with `./mvnw spring-boot:run`; Postgres and Mailpit (fake email inbox) via `docker/docker-compose.dev.yml` | `http://localhost:4200`    | R7.1     |
+| dev         | Laptop                                                                                                                      | `frontend` with `nx serve`; services with `./gradlew bootRun`; Postgres and Mailpit (fake email inbox) via `docker/docker-compose.dev.yml` | `http://localhost:4200`    | R7.1     |
 | test        | Laptop                                                                                                                      | `docker compose -f docker/docker-compose.test.yml up` builds and runs everything                                                                | `http://localhost:8080`    | R7.2     |
 | staging     | Same VPS as production, subdomain (see [staging server spec](../staging-server/requirements.md)) | Compose project `ballb-staging` on the VPS's Docker, images from GitHub Container Registry (GHCR), behind the existing nginx      | `https://staging.<domain>` | R7.3, C5 |
 | prod        | VPS                                                                                                                         | Compose project `ballb-prod`                                                                                                                    | `https://<domain>`         | R7.4, C5 |
@@ -276,7 +280,6 @@ ballb/
 - [ ] SMS provider for one-time codes, and accepting its per-message cost. (R11.2)
 - [ ] Email provider for production (for example an SMTP service). (R11.3, R11.5)
 - [ ] Users under 18 and the Digital Personal Data Protection Act, 2023: block, or parental consent? Needs legal advice. (R11.1)
-- [ ] Java 17 (matches your JDK) or Java 21 (newer LTS)?
 - [ ] Production domain name. (R7.3, R7.4)
 - [ ] Can admins permanently delete content, or only disable it? The design assumes disable only.
 - [ ] Do sections need more than Markdown pages (uploaded PDFs or images)? The design assumes pages only.
