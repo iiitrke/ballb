@@ -3,7 +3,7 @@
 As of 2026-11-04 · Step 3 of 3 · Requirements: [requirements.md](./requirements.md) · Design:
 [design.md](./design.md)
 
-**Approval:** Approved 2026-11-04. Changed 2026-11-04: task 7.2 (staging host), approved 2026-11-04; changed again 2026-11-04 (same VPS), approved 2026-11-04.
+**Approval:** Approved 2026-11-04. Changed 2026-11-04: task 7.2 (staging host), approved 2026-11-04; changed again 2026-11-04 (same VPS), approved 2026-11-04. Changed 2026-11-05: task 1.1 host port 5432 → 5433 (5432 clashed with another local Postgres), agreed by the user 2026-11-05.
 
 **How to use this file:** do one task at a time, in order. A task is finished only when its "Done when"
 check passes. Then tick its box (`- [x]`) in the same change as the code. Each phase is merged to `main`
@@ -34,9 +34,9 @@ on its own branch before the next phase starts.
 Each service folder gets: Maven wrapper, Spring Boot 4.0.9, Java 17, Actuator, Flyway, a `dev` profile
 reading `DB_URL`, `DB_USER`, `DB_PASSWORD` with local defaults, and a Testcontainers context test.
 
-- [ ] **1.1 Docker Compose for development**
-  - Do: `docker/docker-compose.dev.yml` with PostgreSQL 17 (port 5432 on localhost) and Mailpit (fake email
-    inbox, web UI on 8025); `docker/postgres/init/01-create-databases.sh` creating databases and users
+- [x] **1.1 Docker Compose for development**
+  - Do: `docker/docker-compose.dev.yml` with PostgreSQL 17 (port 5433 on localhost) and Mailpit (fake email
+    inbox, web UI on 8025, SMTP on 1025); `docker/postgres/init/01-create-databases.sh` creating databases and users
     `identity`, `curriculum`, `glossary`, `site`, `notification`; `docker/.env.example`.
   - Done when: `docker compose -f docker/docker-compose.dev.yml up -d` starts both; `psql` lists the five
     databases, each owned by its own user; `http://localhost:8025` opens Mailpit.

@@ -1,0 +1,43 @@
+# Development dependencies (task 1.1, R7.1).
+# The frontend and the Spring Boot services run on the host; only these run in Docker.
+#
+#   docker compose -f docker/docker-compose.dev.yml up -d
+#
+# Ports are published on 127.0.0.1 only. Postgres uses host port 5433, not 5432,
+# so it does not clash with another local Postgres. Override any port in docker/.env
+# (see docker/.env.example).
+name: ballb-dev
+
+services:
+  postgres:
+    image: postgres:17.6-alpine
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:-postgres}
+      # Passwords for the per-service users, read by postgres/init/01-create-databases.sh.
+      IDENTITY_DB_PASSWORD: ${IDENTITY_DB_PASSWORD:-identity}
+      CURRICULUM_DB_PASSWORD: ${CURRICULUM_DB_PASSWORD:-curriculum}
+      GLOSSARY_DB_PASSWORD: ${GLOSSARY_DB_PASSWORD:-glossary}
+      SITE_DB_PASSWORD: ${SITE_DB_PASSWORD:-site}
+      NOTIFICATION_DB_PASSWORD: ${NOTIFICATION_DB_PASSWORD:-notification}
+    ports:
+      - "127.0.0.1:${POSTGRES_PORT:-5433}:5432"
+    volumes:
+      - postgres-data:/var/lib/postgresql/data
+      # Runs only when postgres-data is empty (first start, or after `down -v`).
+      - ./postgres/init:/docker-entrypoint-initdb.d:ro
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U postgres"]
+      interval: 5s
+      timeout: 3s
+      retries: 10
+
+  mailpit:
+    # Fake email inbox: services send to SMTP on port 1025; read mail at http://localhost:8025.
+    image: axllent/mailpit:v1.27
+    ports:
+      - "127.0.0.1:${MAILPIT_WEB_PORT:-8025}:8025"
+      - "127.0.0.1:${MAILPIT_SMTP_PORT:-1025}:1025"
+
+volumes:
+  postgres-data:
