@@ -68,4 +68,4 @@ All frontend commands run in `frontend/` (run from the repository root as shown)
 ## Git
 
 - Work on a feature branch; never commit directly to `main`.
-- `deploy` branch publishes to GitHub Pages (to be retired once the VPS staging is live).
+- GitHub Pages is not used. Do not commit on, merge into or push the `deploy` branch.

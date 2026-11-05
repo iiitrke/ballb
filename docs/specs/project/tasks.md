@@ -3,7 +3,7 @@
 As of 2026-11-04 · Step 3 of 3 · Requirements: [requirements.md](./requirements.md) · Design:
 [design.md](./design.md)
 
-**Approval:** Approved 2026-11-04. Changed 2026-11-04: task 7.2 (staging host), approved 2026-11-04; changed again 2026-11-04 (same VPS), approved 2026-11-04. Changed 2026-11-05: task 1.1 host port 5432 → 5433 (5432 clashed with another local Postgres), agreed by the user 2026-11-05.
+**Approval:** Approved 2026-11-04. Changed 2026-11-04: task 7.2 (staging host), approved 2026-11-04; changed again 2026-11-04 (same VPS), approved 2026-11-04. Changed 2026-11-05: task 1.1 host port 5432 → 5433 (5432 clashed with another local Postgres), agreed by the user 2026-11-05. Changed 2026-11-05: tasks 0.2 and 7.5 removed, GitHub Pages is not used (the user's decision, 2026-11-05).
 
 **How to use this file:** do one task at a time, in order. A task is finished only when its "Done when"
 check passes. Then tick its box (`- [x]`) in the same change as the code. Each phase is merged to `main`
@@ -18,12 +18,6 @@ on its own branch before the next phase starts.
   - Done when: `cd frontend && npm ci && npx nx build ballb-portal && npx nx run-many -t lint` all pass, and
     the root holds no Angular or Node files outside `frontend/`.
   - Covers: C8, C9, C11, C12
-- [ ] **0.2 Point the GitHub Pages workflow at `frontend/`**
-  - Do: in `.github/workflows/deploy-pages.yml`, run install and build in `frontend/` and upload
-    `frontend/dist/apps/ballb-portal/browser`.
-  - Done when: the workflow's commands, run locally from the same folder, produce the artifact; after a
-    push to `deploy`, the Pages site still loads.
-  - Covers: C10
 - [x] **0.3 Update commands in `README.md` and `CLAUDE.md`**
   - Do: every command names the folder it runs in (for example `cd frontend && npx nx serve ballb-portal`).
   - Done when: each listed command runs from where it says.
@@ -260,9 +254,6 @@ reading `DB_URL`, `DB_USER`, `DB_PASSWORD` with local defaults, and a Testcontai
 - [ ] **7.4 Production deploy**: `deploy-prod.yml` on an approved `v*` tag re-tags staging-tested images.
   - Done when: an approved tag updates `https://<domain>` with the exact images tested on staging.
   - Covers: R7.4, R7.6
-- [ ] **7.5 Retire GitHub Pages**: remove `deploy-pages.yml` and the `deploy` branch.
-  - Done when: production is live and the workflow is gone.
-  - Covers: C7
 
 ## Before starting a phase
 

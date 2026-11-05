@@ -42,22 +42,8 @@ All commands run from the repository root.
 
 ## Deployment
 
-### GitHub Pages (preview)
-
-The workflow `.github/workflows/deploy-pages.yml` builds and publishes the site to
-`https://iiitrke.github.io/ballb/`. It runs **only on pushes to the `deploy` branch**, or
-manually from the Actions tab.
-
-```sh
-git checkout deploy
-git merge <branch-with-changes>
-git push origin deploy
-```
-
-To make this work, the repository needs:
-
-1. **Settings → Pages → Build and deployment → Source:** `GitHub Actions`.
-2. **Settings → Environments → `github-pages` → Deployment branches:** allow `deploy`.
+The portal is not deployed to GitHub Pages. It will run in containers on the VPS (see
+`docs/specs/project/design.md`, "Environments and deployment").
 
 ### VPS / custom domain (later)
 

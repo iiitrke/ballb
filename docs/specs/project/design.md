@@ -3,7 +3,7 @@
 As of 2026-11-04 · Step 2 of 3 · Requirements: [requirements.md](./requirements.md) · Next: [tasks.md](./tasks.md)
 
 **Approval:** Approved 2026-11-04. All Proposed choices were accepted and are now Agreed. Changed
-2026-11-04: the staging row in Environments, approved 2026-11-04; changed again 2026-11-04 (same VPS, subdomain), approved 2026-11-04.
+2026-11-04: the staging row in Environments, approved 2026-11-04; changed again 2026-11-04 (same VPS, subdomain), approved 2026-11-04. Changed 2026-11-05: GitHub Pages is not used (the user's decision, 2026-11-05).
 
 **Labels:** _Agreed_ = decided by the owner · _Proposed_ = Claude's design choice, awaiting approval ·
 _Open_ = not decided. Every row ends with the requirement (`R…`) or constraint (`C…`) IDs it serves.
@@ -222,8 +222,8 @@ sequenceDiagram
 GitHub Actions (C7, C10): `ci.yml` on pull requests builds and tests only the folders that changed;
 `deploy-staging.yml` on merge to `main` builds changed images, tags them with the commit SHA and
 redeploys staging (R7.5); `deploy-prod.yml` on an approved `v*` tag re-tags the staging-tested images and
-deploys production (R7.6). Flyway runs each service's migrations at startup. The GitHub Pages workflow
-is retired once staging is live.
+deploys production (R7.6). Flyway runs each service's migrations at startup. GitHub Pages is not used: it
+serves only static files, and the portal needs its containers (SSR frontend, gateway, services, Postgres).
 
 ## Repository layout
 
