@@ -1,6 +1,6 @@
 # BA.LLB Learning Portal — Shakambhari University
 
-An Angular web app for BA.LLB students of Shakambhari University. It offers semester-wise
+An web app for BA.LLB students of Shakambhari University. It offers semester-wise
 subjects, unit outlines, statutes to read, and a searchable legal glossary.
 
 Built as an [Nx](https://nx.dev) monorepo with Angular 21 (standalone components, signals,
